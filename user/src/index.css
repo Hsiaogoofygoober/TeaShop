@@ -1,0 +1,14 @@
+.center {
+  display:flex; 
+  justify-content: center;
+  align-items: center;
+}
+.background {
+  background-image: url(./img/background.jpg)
+}
+.plus_cycle {
+  margin-left: 30%;
+}
+.input-center{
+  margin-left: 15%;
+}
