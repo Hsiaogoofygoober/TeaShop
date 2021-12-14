@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using System.IO;
 using System.Data;

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\程式設計\\Asp.net\\React_WebAPI\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+    "D:\\程式設計\\Asp.net\\React_WebAPI\\TeaShop\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "D:\\程式設計\\Asp.net\\React_WebAPI\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+    "D:\\程式設計\\Asp.net\\React_WebAPI\\TeaShop\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\程式設計\\Asp.net\\React_WebAPI\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "D:\\程式設計\\Asp.net\\React_WebAPI\\TeaShop\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "D:\\程式設計\\Asp.net\\React_WebAPI\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectPath": "D:\\程式設計\\Asp.net\\React_WebAPI\\TeaShop\\WebApplication1\\WebApplication1.csproj",
         "packagesPath": "C:\\Users\\abc96\\.nuget\\packages\\",
-        "outputPath": "D:\\程式設計\\Asp.net\\React_WebAPI\\WebApplication1\\WebApplication1\\obj\\",
+        "outputPath": "D:\\程式設計\\Asp.net\\React_WebAPI\\TeaShop\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\abc96\\AppData\\Roaming\\NuGet\\NuGet.Config",

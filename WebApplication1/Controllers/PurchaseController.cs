@@ -76,14 +76,5 @@ namespace WebApplication1.Controllers
 
             return new JsonResult(result);
         }
-
-
-        //[HttpDelete]
-        //public JsonResult Delete()
-        //{
-            
-            
-            
-        //}
     }
 }
