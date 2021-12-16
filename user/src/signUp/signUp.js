@@ -1,11 +1,11 @@
 import React,{useState} from "react";
-import Form from './Form';
-import img from './img/teapot.jfif'
+import SignUpForm from './signUpForm';
+import img from '../img/teapot.jfif'
 const imgStyle = {
     width: 'auto',
     height: 'auto' 
   };
-function Card() {
+function SignUp() {
     const [formDone,setFormDone] = useState(false);
     const [isSubmit,setIsSubmit] = useState(false);
 
@@ -21,11 +21,11 @@ function Card() {
                     <div className="uk-card-media-top">
                         <img src={img} style={imgStyle}/>
                     </div>
-                    <Form setFormDone={setFormDone} setIsSubmit={setIsSubmit}/>
+                    <SignUpForm setFormDone={setFormDone} setIsSubmit={setIsSubmit}/>
                     
                 </div>
             </div>
         </div>
     )
 }
-export default Card;
+export default SignUp;

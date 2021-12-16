@@ -1,10 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Card from './card';
+import SignIn from './signIn/signIn';
+import SignUp from './signUp/signUp'
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
 
 ReactDOM.render(
-  <Card/>,
+  <BrowserRouter>
+  <Routes>
+  <Route path="/" element={<SignIn/>} />
+  <Route path="SignUp" element={<SignUp/>} />
+  </Routes>
+  </BrowserRouter>
+  ,
   document.getElementById('root')
 );
 

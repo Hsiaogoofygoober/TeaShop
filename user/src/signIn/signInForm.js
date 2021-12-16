@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import './index.css'
+import { Link } from "react-router-dom";
+import '../index.css'
 
-function Form(props) {
+function SignInForm(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -16,7 +17,7 @@ function Form(props) {
         }
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method="post">
             <fieldset className="uk-fieldset">
                 <legend className="uk-legend center ">茶壺倉儲管理者登錄系統</legend>
                 <div className=" uk-inline uk-margin-small  input-center" >
@@ -31,7 +32,7 @@ function Form(props) {
                 </div>
                 <div className="uk-margin-small center">
                     <input type="submit" value="登入" className="uk-button uk-button-default" />
-                    <a href="./signUp.html" uk-icon="icon: plus-circle; ratio:1.5" className="plus_cycle"></a>
+                    <Link to="/signUp" className="plus_cycle" uk-icon="icon: plus-circle; ratio:1.5"></Link>
                 </div>
             </fieldset>
         </form>
@@ -39,4 +40,4 @@ function Form(props) {
 }
 
 
-export default Form;
+export default SignInForm;

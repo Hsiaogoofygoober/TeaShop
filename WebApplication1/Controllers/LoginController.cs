@@ -34,7 +34,7 @@ namespace WebApplication1.Controllers
             string sqlstr = "Select * From [User] Where UserName = @UserName and Password = @Password";
             var parameter = new { UserName = _user.UserName, Password = _user.Password };
 
-            User result = Conn.QuerySingle<User>(sqlstr, parameter);
+            User result = Conn.QuerySingleOrDefault<User>(sqlstr, parameter);
 
             if (result == null)
             {
