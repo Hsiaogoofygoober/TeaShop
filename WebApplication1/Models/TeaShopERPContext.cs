@@ -64,7 +64,7 @@ namespace WebApplication1.Models
 
                 entity.Property(e => e.PurchaseOrderDetailId).HasColumnName("PurchaseOrderDetailID");
 
-                entity.Property(e => e.Price).HasColumnType("money");
+                entity.Property(e => e.PurchasePrice).HasColumnType("money");
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
@@ -112,7 +112,7 @@ namespace WebApplication1.Models
 
                 entity.Property(e => e.SalesOrderDetailId).HasColumnName("SalesOrderDetailID");
 
-                entity.Property(e => e.Price).HasColumnType("money");
+                entity.Property(e => e.SalesPrice).HasColumnType("money");
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 

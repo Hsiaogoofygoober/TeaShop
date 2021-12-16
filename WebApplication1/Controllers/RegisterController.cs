@@ -1,9 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.IO;
 using WebApplication1.Models;
 using Dapper;
 using static Dapper.SqlMapper;
@@ -20,7 +16,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public int Register([FromBody]User _user)
         {
-            if (_user != null) 
+            if (_user.UserName != null && _user.Password != null) 
             {
                 var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 

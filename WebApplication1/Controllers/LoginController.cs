@@ -22,7 +22,6 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<bool> Login([FromBody]User _user) 
         {
-            
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 
             IConfiguration config = configurationBuilder.Build();
