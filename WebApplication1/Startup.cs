@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,14 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+            .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.AccessDeniedPath = "/LoginDB/AccessDeny";
+                options.LoginPath = "/LoginDB/LoginDB";
+            });
+
             services.AddDbContext<TeaShopERPContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DBConnectionString")));
 
@@ -43,6 +52,8 @@ namespace WebApplication1
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
