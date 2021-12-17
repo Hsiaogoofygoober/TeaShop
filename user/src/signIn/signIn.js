@@ -8,10 +8,10 @@ const imgStyle = {
     height: 'auto' 
   };
 function SignIn() {
-    const [formDone,setFormDone] = useState(false);
+    const [formDone,setFormDone] = useState(0);
     const [isSubmit,setIsSubmit] = useState(false);
 
-    useEffect(()=>{
+    /*useEffect(()=>{
         const url = api.API_URL + 'Login';
         const fetchUserData = async()=>{
             try{
@@ -24,17 +24,21 @@ function SignIn() {
                 console.log("error",error);
             }
         }
+        if(isSubmit===true){
+            fetchUserData();
+        }
+        
+    },[]);*/
 
-        fetchUserData();
-    },[]);
-
-    if(isSubmit===true){
+   /* if(isSubmit===true){
         setIsSubmit(false);
-        return(formDone 
-        ? alert('登入成功')
-        : alert('帳號密碼請填寫正確'))
-
-    }
+        console.log(formDone);
+        switch(formDone){
+            case 0 : return(alert('請填寫帳號密碼'));
+            case 1 : return(alert('登入成功'));
+            case 2 : return(alert('帳號密碼請填寫正確'));
+        }
+    }*/
     return (
         <div className="uk-child-width-1-4@m uk-margin-medium-top center">
             <div className="uk-height-medium">
