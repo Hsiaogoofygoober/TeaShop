@@ -1,17 +1,17 @@
 import React, { useState,useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import {api} from '../api';
 import '../index.css'
 
-function SignInForm(props) {
+function SignInForm() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    
+    const navigate = useNavigate();
     const handleSubmit =(e)=>{
         let json = false;
         e.preventDefault();
-        props.setIsSubmit(true);
-        const data = new FormData(document.getElementById("signUpForm"))
+        
+        const data = new FormData(document.getElementById("signInForm"))
         const url = api.API_URL + 'Login';
         const value = Object.fromEntries(data.entries());
         const fetchUserData = async()=>{
@@ -24,7 +24,7 @@ function SignInForm(props) {
                     })
                     
                 json = await response.json();
-                
+                console.log(JSON.stringify(value));
                 console.log(response);
                 console.log(json);
             }
@@ -32,28 +32,32 @@ function SignInForm(props) {
                 console.log("error",error);
             }
         }
+
+        if(username === '' || password === ''){
+            alert("請填寫帳號密碼");
+        }
+
         async function checkIfInputCorrect(){
             await fetchUserData();
             console.log(username)
             if(username !== '' && password !== ''){
                 if(json === false){
-                   return(alert("帳號密碼請填寫正確")) ;
+                   alert("帳號密碼請填寫正確") ;
                 }
                 else if(json === true){
-                    return(alert("登入成功")) ;
+                    alert("登入成功");
+                    navigate('/stock')
                 }
                 
             }
-            else{
-                return(alert("請填寫帳號密碼"));
-            }
+            
         }
         checkIfInputCorrect();
         }
 
         
     return (
-        <form id="signUpForm" onSubmit={handleSubmit}>
+        <form id="signInForm" onSubmit={handleSubmit}>
             <fieldset className="uk-fieldset">
                 <legend className="uk-legend center ">茶壺倉儲管理者登錄系統</legend>
                 <div className=" uk-inline uk-margin-small  input-center" >

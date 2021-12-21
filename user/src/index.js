@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import SignIn from './signIn/signIn';
-import SignUp from './signUp/signUp'
+import SignUp from './signUp/signUp';
+//import Stock from './stock/stock';
+
 import {
   BrowserRouter,
   Routes,
@@ -15,6 +17,7 @@ ReactDOM.render(
   <Routes>
   <Route path="/" element={<SignIn/>} />
   <Route path="SignUp" element={<SignUp/>} />
+  
   </Routes>
   </BrowserRouter>
   ,
