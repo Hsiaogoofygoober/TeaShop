@@ -8,8 +8,18 @@
 //{
 //    public class IRepository
 //    {
-//         public abstract SqlConnection ConnOpen();
+//        public  SqlConnection ConnOpen();
 
-//         public virtual void ConnClose(SqlConnection Conn);
+//        public  void ConnClose(SqlConnection Conn);
+//    }
+
+//    public class Repository : IRepository 
+//    {
+//        public SqlConnection ConnOpen() 
+//        {
+            
+//        }
+    
+    
 //    }
 //}

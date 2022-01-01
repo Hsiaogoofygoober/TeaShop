@@ -11,7 +11,7 @@ namespace WebApplication1.Models
         public int PurchaseOrderId { get; set; }
         public int ProductId { get; set; }
         public int PurchaseQuantity { get; set; }
-        public decimal? PurchasePrice { get; set; }
+        public decimal? UnitPrice { get; set; }
 
         public virtual Product Product { get; set; }
         public virtual PurchaseOrderHeader PurchaseOrder { get; set; }

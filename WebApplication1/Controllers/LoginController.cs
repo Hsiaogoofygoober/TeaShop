@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
+//using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 using WebApplication1.Models;
 using Dapper;
 using static Dapper.SqlMapper;
@@ -20,7 +21,7 @@ namespace WebApplication1.Controllers
     {
 
         [HttpPost]
-        public async Task<bool> Login([FromBody]User _user) 
+        public async Task<JsonResult> Login([FromBody]User _user) 
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 
@@ -37,7 +38,7 @@ namespace WebApplication1.Controllers
 
             if (result == null)
             {
-                return false;
+                return new JsonResult(false);
             }
             else 
             {
@@ -61,7 +62,7 @@ namespace WebApplication1.Controllers
                                                                     new ClaimsPrincipal(claimsIdentity),
                                                                     authProperties);
 
-                return true;
+                return new JsonResult(true);
             }
         }
 

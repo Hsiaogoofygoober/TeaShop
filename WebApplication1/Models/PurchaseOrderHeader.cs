@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -14,6 +15,9 @@ namespace WebApplication1.Models
 
         public int PurchaseOrderId { get; set; }
         public int SupplierId { get; set; }
+
+        [NotMapped]
+        public string UserName { get; set; }
         public decimal PurchaseTotal { get; set; }
         public DateTime PurchaseDate { get; set; }
         public int? Arrival { get; set; }
