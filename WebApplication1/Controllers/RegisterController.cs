@@ -16,7 +16,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public int Register([FromBody]User _user)
         {
-            if (_user.UserName != null && _user.Password != null) 
+            if (_user.UserName != "" && _user.Password != "") 
             {
                 var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 

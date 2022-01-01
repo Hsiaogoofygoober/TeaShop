@@ -35,5 +35,35 @@ namespace WebApplication1.Controllers
 
             return new JsonResult(result);
         }
+
+        [HttpPost]
+        public JsonResult Post(Product _product) 
+        {
+            if (_product.Name != "" && _product.Type != "" && _product.ProductCategory != "" && _product.ProductDescription != "")
+            {
+                var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+
+                IConfiguration config = configurationBuilder.Build();
+                string connectinoString = config["ConnectionStrings:DBConnectionString"];
+
+                var Conn = new SqlConnection(connectinoString);
+                Conn.Open();
+
+                string sqlstr = "INSERT INTO [Product] ([Name], [Type], [ProductCategory], [ProductDescription])";
+                sqlstr += " VALUES (@Name, @Type, @ProductCategory, @ProductDescription)";
+
+                int affectedRows = Conn.Execute(sqlstr, new
+                {
+                    Name = _product.Name,
+                    Type = _product.Type,
+                    ProductCategory = _product.ProductCategory,
+                    ProductDescription = _product.ProductDescription,
+                });
+
+                return new JsonResult(affectedRows);
+            }
+
+            return new JsonResult(0);
+        }
     }
 }
