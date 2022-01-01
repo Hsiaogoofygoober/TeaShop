@@ -126,6 +126,7 @@ D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\obj\Debug\netcoreap
 D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.dll
 D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.pdb
 D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.genruntimeconfig.cache
+<<<<<<< HEAD
 D:\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\appsettings.json
 D:\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\WebApplication1.exe
@@ -194,3 +195,14 @@ D:\TeaShop\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.csproj.CopyCo
 D:\TeaShop\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.dll
 D:\TeaShop\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.pdb
 D:\TeaShop\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.genruntimeconfig.cache
+=======
+D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\程式設計\Asp.net\React_WebAPI\TeaShop\WebApplication1\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+>>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7

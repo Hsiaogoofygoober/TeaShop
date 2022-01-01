@@ -20,6 +20,10 @@
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\5.0.12\build\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\5.0.12\build\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+<<<<<<< HEAD
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\za135\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.12</PkgMicrosoft_EntityFrameworkCore_Tools>
+=======
+    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\abc96\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.12</PkgMicrosoft_EntityFrameworkCore_Tools>
+>>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
   </PropertyGroup>
 </Project>
