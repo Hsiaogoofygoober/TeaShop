@@ -23,11 +23,7 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
-<<<<<<< HEAD
-      "Microsoft.AspNetCore.JsonPatch/3.1.16": {
-=======
       "Microsoft.AspNetCore.JsonPatch/3.1.22": {
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -40,17 +36,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
         }
       },
-<<<<<<< HEAD
-      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/3.1.16": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.JsonPatch": "3.1.16",
-=======
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson/3.1.22": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.JsonPatch": "3.1.22",
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
           "Newtonsoft.Json": "12.0.2",
           "Newtonsoft.Json.Bson": "1.0.2"
         },
@@ -1564,17 +1553,10 @@
         "logo.png"
       ]
     },
-<<<<<<< HEAD
-    "Microsoft.AspNetCore.JsonPatch/3.1.16": {
-      "sha512": "0oycX2vP+nN3H36ub3A+RbGfzYrh1oldsQbM1NzhGX8o+EW2xpoxrjSTblml2bObzjL+GauGgpbIJp6sykmV/w==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.jsonpatch/3.1.16",
-=======
     "Microsoft.AspNetCore.JsonPatch/3.1.22": {
       "sha512": "bFPowEMekIgsoR1z4XVUsdiqg8fzx4YGDWSbuIsNyqWrvIQI33JbTabFtQilmoZTcG7V4qwmabxvb+w9mK1IUA==",
       "type": "package",
       "path": "microsoft.aspnetcore.jsonpatch/3.1.22",
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1582,16 +1564,6 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.xml",
-<<<<<<< HEAD
-        "microsoft.aspnetcore.jsonpatch.3.1.16.nupkg.sha512",
-        "microsoft.aspnetcore.jsonpatch.nuspec"
-      ]
-    },
-    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/3.1.16": {
-      "sha512": "YV3/E/v6LIfqiGJG872HJECLVc7W4QUZ/7tXgSvQcczj4Fu4JOaM3fOxnQzt9cAYnYRsfXILcleCfePslQK/lA==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/3.1.16",
-=======
         "microsoft.aspnetcore.jsonpatch.3.1.22.nupkg.sha512",
         "microsoft.aspnetcore.jsonpatch.nuspec"
       ]
@@ -1600,7 +1572,6 @@
       "sha512": "f5R2RTZtP9YU0OGWmk62gV/NMTORCYEi5vIdRkfZxim6UHbSZMJWPXdI/zUfp3cuUkmZydjgDlv3A2bfXusICQ==",
       "type": "package",
       "path": "microsoft.aspnetcore.mvc.newtonsoftjson/3.1.22",
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1608,11 +1579,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll",
         "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.xml",
-<<<<<<< HEAD
-        "microsoft.aspnetcore.mvc.newtonsoftjson.3.1.16.nupkg.sha512",
-=======
         "microsoft.aspnetcore.mvc.newtonsoftjson.3.1.22.nupkg.sha512",
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
         "microsoft.aspnetcore.mvc.newtonsoftjson.nuspec"
       ]
     },
@@ -5773,11 +5740,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Dapper >= 2.0.123",
-<<<<<<< HEAD
-      "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 3.1.16",
-=======
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 3.1.22",
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.12",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.12",
       "System.Data.SqlClient >= 4.8.3"
@@ -5833,11 +5796,7 @@
           },
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
             "target": "Package",
-<<<<<<< HEAD
-            "version": "[3.1.16, )"
-=======
             "version": "[3.1.22, )"
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
@@ -5875,5 +5834,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "讀取快取檔案 D:\\TeaShop\\WebApplication1\\obj\\project.nuget.cache 時發生問題: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

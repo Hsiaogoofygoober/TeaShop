@@ -50,11 +50,7 @@
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
-<<<<<<< HEAD
-              "version": "[3.1.16, )"
-=======
               "version": "[3.1.22, )"
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
