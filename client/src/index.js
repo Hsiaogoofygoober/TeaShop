@@ -5,7 +5,9 @@ import TeapotLayer from './teapot/teapotLayer';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <TeapotLayer/>,
+  <div>
+  <TeapotLayer/>
+  </div>,
   document.getElementById('root')
 );
 

@@ -18,7 +18,7 @@ namespace WebApplication1.Models
         public string Name { get; set; }
         public string Type { get; set; }
         public string ProductCategory { get; set; }
-        public byte[] ProductPicture { get; set; }
+        public string ProductPicture { get; set; }
         public string ProductDescription { get; set; }
 
         public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
