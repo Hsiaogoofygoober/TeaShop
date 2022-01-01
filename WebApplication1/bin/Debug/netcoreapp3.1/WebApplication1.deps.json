@@ -32,11 +32,7 @@
       "WebApplication1/1.0.0": {
         "dependencies": {
           "Dapper": "2.0.123",
-<<<<<<< HEAD
-          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.16",
-=======
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.22",
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.12",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.12",
           "System.Data.SqlClient": "4.8.3",
@@ -340,51 +336,31 @@
           }
         }
       },
-<<<<<<< HEAD
-      "Microsoft.AspNetCore.JsonPatch/3.1.16": {
-=======
       "Microsoft.AspNetCore.JsonPatch/3.1.22": {
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {
-<<<<<<< HEAD
-            "assemblyVersion": "3.1.16.0",
-            "fileVersion": "3.100.1621.26305"
-=======
             "assemblyVersion": "3.1.22.0",
             "fileVersion": "3.100.2221.57904"
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
           }
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
         }
       },
-<<<<<<< HEAD
-      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/3.1.16": {
-        "dependencies": {
-          "Microsoft.AspNetCore.JsonPatch": "3.1.16",
-=======
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson/3.1.22": {
         "dependencies": {
           "Microsoft.AspNetCore.JsonPatch": "3.1.22",
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
           "Newtonsoft.Json": "12.0.2",
           "Newtonsoft.Json.Bson": "1.0.2"
         },
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll": {
-<<<<<<< HEAD
-            "assemblyVersion": "3.1.16.0",
-            "fileVersion": "3.100.1621.26305"
-=======
             "assemblyVersion": "3.1.22.0",
             "fileVersion": "3.100.2221.57904"
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
           }
         },
         "compile": {
@@ -3096,21 +3072,6 @@
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
     },
-<<<<<<< HEAD
-    "Microsoft.AspNetCore.JsonPatch/3.1.16": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-0oycX2vP+nN3H36ub3A+RbGfzYrh1oldsQbM1NzhGX8o+EW2xpoxrjSTblml2bObzjL+GauGgpbIJp6sykmV/w==",
-      "path": "microsoft.aspnetcore.jsonpatch/3.1.16",
-      "hashPath": "microsoft.aspnetcore.jsonpatch.3.1.16.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/3.1.16": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-YV3/E/v6LIfqiGJG872HJECLVc7W4QUZ/7tXgSvQcczj4Fu4JOaM3fOxnQzt9cAYnYRsfXILcleCfePslQK/lA==",
-      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/3.1.16",
-      "hashPath": "microsoft.aspnetcore.mvc.newtonsoftjson.3.1.16.nupkg.sha512"
-=======
     "Microsoft.AspNetCore.JsonPatch/3.1.22": {
       "type": "package",
       "serviceable": true,
@@ -3124,7 +3085,6 @@
       "sha512": "sha512-f5R2RTZtP9YU0OGWmk62gV/NMTORCYEi5vIdRkfZxim6UHbSZMJWPXdI/zUfp3cuUkmZydjgDlv3A2bfXusICQ==",
       "path": "microsoft.aspnetcore.mvc.newtonsoftjson/3.1.22",
       "hashPath": "microsoft.aspnetcore.mvc.newtonsoftjson.3.1.22.nupkg.sha512"
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
@@ -3330,7 +3290,6 @@
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
     },
     "Newtonsoft.Json/12.0.2": {
-<<<<<<< HEAD
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
@@ -3340,17 +3299,6 @@
     "Newtonsoft.Json.Bson/1.0.2": {
       "type": "package",
       "serviceable": true,
-=======
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
-      "path": "newtonsoft.json/12.0.2",
-      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
-    },
-    "Newtonsoft.Json.Bson/1.0.2": {
-      "type": "package",
-      "serviceable": true,
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
       "sha512": "sha512-QYFyxhaABwmq3p/21VrZNYvCg3DaEoN/wUuw5nmfAf0X3HLjgupwhkEWdgfb9nvGAUIv3osmZoD3kKl4jxEmYQ==",
       "path": "newtonsoft.json.bson/1.0.2",
       "hashPath": "newtonsoft.json.bson.1.0.2.nupkg.sha512"

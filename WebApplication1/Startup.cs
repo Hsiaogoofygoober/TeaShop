@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using WebApplication1.Models;
-using Newtonsoft.Json.Serialization;
+
 
 namespace WebApplication1
 {
@@ -62,10 +62,8 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-<<<<<<< HEAD
+
             //Enable CORS
-=======
->>>>>>> a9d5dfa0046bf08eea9df7d96e49a61a3a8d64c7
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             if (env.IsDevelopment())
