@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import SignIn from './signIn/signIn';
 import SignUp from './signUp/signUp';
+import Purchase from './purchase/purchase';
 //import Stock from './stock/stock';
 
 import {
@@ -17,7 +18,7 @@ ReactDOM.render(
   <Routes>
   <Route path="/" element={<SignIn/>} />
   <Route path="SignUp" element={<SignUp/>} />
-  
+  <Route path="Purchase" element={<Purchase/>} />
   </Routes>
   </BrowserRouter>
   ,
