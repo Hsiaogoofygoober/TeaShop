@@ -77,7 +77,7 @@ namespace WebApplication1.Controllers
             sqlstr += " WHERE poh.PurchaseOrderID = @PurchaseOrderID";
 
             SqlCommand cmd = new SqlCommand(sqlstr, Conn);
-            cmd.Parameters.AddWithValue("@PurchaseOrderID", id);
+            cmd.Parameters.AddWithValue("@PurchaseOrderID", id); // 防止Sql Injection
             dr = cmd.ExecuteReader();
 
             List<SPViewModel> resultViewModel = new List<SPViewModel>();
@@ -125,7 +125,6 @@ namespace WebApplication1.Controllers
             return new JsonResult(resultViewModel);
         }
 
-
         [HttpPost]
         public async Task<JsonResult> CreatePurchaseHeader([FromBody]PurchaseOrderHeader _poh) 
         {
@@ -137,14 +136,14 @@ namespace WebApplication1.Controllers
             var Conn = new SqlConnection(connectinoString);
             Conn.Open();
 
-            string sqlstr = "INSERT INTO [PurchaseOrderHeader] ([SuppierID], [PurchaseTotal], [PurchaseDate])";
-            sqlstr += " VALUES (@SuppierID, @PurchaseTotal, @PurchaseDate)";
+            string sqlstr = "INSERT INTO [PurchaseOrderHeader] ([SupplierID], [PurchaseTotal], [PurchaseDate])";
+            sqlstr += " VALUES (@SupplierID, @PurchaseTotal, @PurchaseDate)";
 
             int affectRows = await Conn.ExecuteAsync(sqlstr, new
             {
-                SupplierId = _poh.SupplierId,
+                SupplierID = _poh.SupplierId,
                 PurchaseTotal = _poh.PurchaseTotal,
-                PurchaseDate = _poh.PurchaseDate
+                PurchaseDate = _poh.PurchaseDate,
             });
 
 
@@ -153,7 +152,64 @@ namespace WebApplication1.Controllers
                 Conn.Close();
             }
 
-            return new JsonResult(0);
+            return new JsonResult(affectRows);
+        }
+
+        [HttpPut]
+        public async Task<JsonResult> UpdatePurchaseHeader([Bind(include: "SupplierId, PurchaseTotal, PurchaseDate")]PurchaseOrderHeader _poh) 
+        {
+            var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+
+            IConfiguration config = configurationBuilder.Build();
+            string connectinoString = config["ConnectionStrings:DBConnectionString"];
+
+            var Conn = new SqlConnection(connectinoString);
+            Conn.Open();
+
+            string sqlstr = "UPDATE PurchaseOrderHeader SET SupplierId = @SupplierId, PurchaseTotal = @PurchaseTotal";
+            sqlstr += " WHERE PurchaseOrderID = @PurchaseOrderID";
+
+            int affectRows = await Conn.ExecuteAsync(sqlstr, new
+            {
+                PurchaseOrderId = _poh.PurchaseOrderId,
+                SupplierId = _poh.SupplierId,
+                PurchaseTotal = _poh.PurchaseTotal,
+                PurchaseDate = _poh.PurchaseDate
+            });
+
+            if (Conn.State == ConnectionState.Open)
+            {
+                Conn.Close();
+            }
+
+            return new JsonResult(affectRows);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<JsonResult> DeletePurchaseHeader(int id)
+        {
+            var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+
+            IConfiguration config = configurationBuilder.Build();
+            string connectinoString = config["ConnectionStrings:DBConnectionString"];
+
+            var Conn = new SqlConnection(connectinoString);
+            Conn.Open();
+
+            string sqlstr = "DELETE FROM PurchaseOrderHeader";
+            sqlstr += " WHERE PurchaseOrderId = @PurchaseOrderId";
+
+            int affectRows = await Conn.ExecuteAsync(sqlstr, new
+            {
+                PurchaseOrderId = id
+            }); 
+
+            if (Conn.State == ConnectionState.Open)
+            {
+                Conn.Close();
+            }
+
+            return new JsonResult(affectRows);
         }
     }
 }
