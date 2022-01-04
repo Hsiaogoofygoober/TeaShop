@@ -32,8 +32,8 @@ namespace WebApplication1.Controllers
         //    return "value";
         //}
         // POST api/<PurchaseDetailController>
-        [HttpGet("{id1}/{id2}/{quantity}/{price}")]
-        public async Task<JsonResult> CreateDetails(int id1, int id2, int quantity, int price)
+        [HttpPost("{id}")]
+        public async Task<JsonResult> CreateDetails(int id, [FromBody] List<PurchaseOrderDetail> _pod)
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 
@@ -46,13 +46,16 @@ namespace WebApplication1.Controllers
             string sqlstr = "INSERT INTO [PurchaseOrderDetail] ([PurchaseOrderId], [ProductId], [PurchaseQuantity], [UnitPrice])";
             sqlstr += " VALUES (@PurchaseOrderId, @ProductId, @PurchaseQuantity, @UnitPrice)";
 
-            int affectRows = await Conn.ExecuteAsync(sqlstr, new
+            var ListProduct = new List<PurchaseOrderDetail>();
+            foreach (var item in _pod)
             {
-                PurchaseOrderId = id1,
-                ProductId = id2,
-                PurchaseQuantity = quantity,
-                UnitPrice = price
-            });
+                ListProduct.Add(new PurchaseOrderDetail()
+                {
+                    PurchaseOrderId = id, ProductId = item.ProductId, PurchaseQuantity = item.PurchaseQuantity, UnitPrice = item.UnitPrice
+                });
+            }
+
+            int affectRows = await Conn.ExecuteAsync(sqlstr, ListProduct);
 
             if (Conn.State == ConnectionState.Open)
             {
@@ -60,30 +63,30 @@ namespace WebApplication1.Controllers
             }
 
             return new JsonResult(affectRows);
-        }
+}
 
         // PUT api/PurchaseDetail/5
-        //[HttpPut("{id}")]
-        //public async Task<JsonResult> UpdatePurchaseDetail([Bind(include: "ProductId, PurchaseQuantity, UnitPrice")]PurchaseOrderDetail _pod)
-        //{
-        //    var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+        [HttpPut("{id}")]
+        public async Task<JsonResult> UpdatePurchaseDetail([Bind(include: "ProductId, PurchaseQuantity, UnitPrice")] PurchaseOrderDetail _pod)
+        {
+            var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 
-        //    IConfiguration config = configurationBuilder.Build();
-        //    string connectinoString = config["ConnectionStrings:DBConnectionString"];
+            IConfiguration config = configurationBuilder.Build();
+            string connectinoString = config["ConnectionStrings:DBConnectionString"];
 
-        //    var Conn = new SqlConnection(connectinoString);
-        //    Conn.Open();
+            var Conn = new SqlConnection(connectinoString);
+            Conn.Open();
 
-        //    string sqlstr = "UPDATE PurchaseOrderDetail SET SupplierId = @SupplierId, PurchaseTotal = @PurchaseTotal";
-        //    sqlstr += " WHERE PurchaseOrderID = @PurchaseOrderID";
+            string sqlstr = "UPDATE PurchaseOrderDetail SET SupplierId = @SupplierId, PurchaseTotal = @PurchaseTotal";
+            sqlstr += " WHERE PurchaseOrderID = @PurchaseOrderID";
 
-        //    return new JsonResult(1);
-        //}
+            return new JsonResult(1);
+        }
 
         // DELETE api/<PurchaseDetailController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+public void Delete(int id)
+{
+}
     }
 }

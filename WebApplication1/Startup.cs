@@ -71,8 +71,6 @@ namespace WebApplication1
                 app.UseDeveloperExceptionPage();
             }
 
-            
-
             app.UseRouting();
 
             app.UseAuthorization();
