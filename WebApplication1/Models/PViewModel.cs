@@ -7,8 +7,8 @@ namespace WebApplication1.Models
 {
     public class PViewModel
     {
-        public PurchaseOrderDetail PVM { get; set; }
+        public IList<PurchaseOrderDetail> PDVM { get; set; }
 
-        public Product PRVM { get; set; }
+        public PurchaseOrderHeader PHVM { get; set; }
     }
 }

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using WebApplication1.Models;
 using Dapper;
 using static Dapper.SqlMapper;
+using Newtonsoft.Json.Linq;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebApplication1.Controllers
@@ -32,7 +33,7 @@ namespace WebApplication1.Controllers
         //    return "value";
         //}
         // POST api/<PurchaseDetailController>
-        [HttpPost("{id}")]
+        [HttpPost("{id:int}")]
         public async Task<JsonResult> CreateDetails(int id, [FromBody] List<PurchaseOrderDetail> _pod)
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
@@ -51,7 +52,10 @@ namespace WebApplication1.Controllers
             {
                 ListProduct.Add(new PurchaseOrderDetail()
                 {
-                    PurchaseOrderId = id, ProductId = item.ProductId, PurchaseQuantity = item.PurchaseQuantity, UnitPrice = item.UnitPrice
+                    PurchaseOrderId = id,
+                    ProductId = item.ProductId,
+                    PurchaseQuantity = item.PurchaseQuantity,
+                    UnitPrice = item.UnitPrice
                 });
             }
 
@@ -63,11 +67,11 @@ namespace WebApplication1.Controllers
             }
 
             return new JsonResult(affectRows);
-}
+        }
 
         // PUT api/PurchaseDetail/5
-        [HttpPut("{id}")]
-        public async Task<JsonResult> UpdatePurchaseDetail([Bind(include: "ProductId, PurchaseQuantity, UnitPrice")] PurchaseOrderDetail _pod)
+        [HttpPut("{id:int}")]
+        public async Task<JsonResult> UpdatePurchaseDetail(int id, [Bind(include: "ProductId, PurchaseQuantity, ")] PurchaseOrderDetail _pod)
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 
@@ -77,16 +81,24 @@ namespace WebApplication1.Controllers
             var Conn = new SqlConnection(connectinoString);
             Conn.Open();
 
-            string sqlstr = "UPDATE PurchaseOrderDetail SET SupplierId = @SupplierId, PurchaseTotal = @PurchaseTotal";
+            string sqlstr = "UPDATE PurchaseOrderDetail SET ProductId = @ProductId, PurchaseQuantity = @PurchaseQuantity, UnitPrice = @UnitPrice";
             sqlstr += " WHERE PurchaseOrderID = @PurchaseOrderID";
+
+            int affectRows = await Conn.ExecuteAsync(sqlstr, new
+            {
+                PurchaseOrderId = id,
+                ProductId = _pod.ProductId,
+                PurchaseTotal = _pod.PurchaseQuantity,
+                UnitPrice = _pod.UnitPrice
+            });
 
             return new JsonResult(1);
         }
 
         // DELETE api/<PurchaseDetailController>/5
         [HttpDelete("{id}")]
-public void Delete(int id)
-{
-}
+        public void Delete(int id)
+        {
+        }
     }
 }
