@@ -54,7 +54,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(endData);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public JsonResult GetDetails(int id)
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
@@ -64,10 +64,6 @@ namespace WebApplication1.Controllers
 
             var Conn = new SqlConnection(connectinoString);
             Conn.Open();
-
-            //string sqlstr = "Select * From [PurchaseOrderDetail] Where PurchaseOrderId = @PurchaseOrderId";
-            //var parameter = new { PurchaseOrderId = id };
-            //IEnumerable<PurchaseOrderDetail> result = Conn.Query<PurchaseOrderDetail>(sqlstr, parameter);
 
             SqlDataReader dr = null;
             string sqlstr = "SELECT poh.PurchaseOrderID, poh.PurchaseDate, s.SupplierName, pod.ProductID, p.Type, p.ProductCategory, p.Name, pod.PurchaseQuantity, pod.UnitPrice FROM PurchaseOrderHeader AS poh";
@@ -146,7 +142,6 @@ namespace WebApplication1.Controllers
                 PurchaseDate = _poh.PurchaseDate,
             });
 
-
             if (Conn.State == ConnectionState.Open) 
             {
                 Conn.Close();
@@ -185,7 +180,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(affectRows);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<JsonResult> DeletePurchaseHeader(int id)
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");

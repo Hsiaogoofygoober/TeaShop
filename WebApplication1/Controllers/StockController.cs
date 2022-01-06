@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.IO;
 using Microsoft.Data.SqlClient;
-using Dapper;
-using static Dapper.SqlMapper;
-using WebApplication1.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
-using System;
+using WebApplication1.Models;
 using Newtonsoft.Json.Linq;
+using Dapper;
+using static Dapper.SqlMapper;
 
 namespace WebApplication1.Controllers
 {
@@ -104,7 +104,6 @@ namespace WebApplication1.Controllers
                 ProductId = _product.ProductId,
                 StockAmount = 0
             });
-
 
             string sqlstr3 = "UPDATE Product SET ProductPicture = @ProductPicture";
             sqlstr2 += " WHERE ProductId = @ProductId";
