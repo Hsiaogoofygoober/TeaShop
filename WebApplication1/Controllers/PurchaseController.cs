@@ -132,14 +132,13 @@ namespace WebApplication1.Controllers
             var Conn = new SqlConnection(connectinoString);
             Conn.Open();
 
-            string sqlstr = "INSERT INTO [PurchaseOrderHeader] ([SupplierID], [PurchaseTotal], [PurchaseDate])";
-            sqlstr += " VALUES (@SupplierID, @PurchaseTotal, @PurchaseDate)";
+            string sqlstr = "INSERT INTO [PurchaseOrderHeader] ([SupplierID], [PurchaseTotal])";
+            sqlstr += " VALUES (@SupplierID, @PurchaseTotal)";
 
             int affectRows = await Conn.ExecuteAsync(sqlstr, new
             {
                 SupplierID = _poh.SupplierId,
                 PurchaseTotal = _poh.PurchaseTotal,
-                PurchaseDate = _poh.PurchaseDate,
             });
 
             string sqlstr1 = "SELECT PurchaseOrderId From [PurchaseOrderHeader]";
@@ -181,7 +180,6 @@ namespace WebApplication1.Controllers
                 PurchaseOrderId = _poh.PurchaseOrderId,
                 SupplierId = _poh.SupplierId,
                 PurchaseTotal = _poh.PurchaseTotal,
-                PurchaseDate = _poh.PurchaseDate
             });
 
             if (Conn.State == ConnectionState.Open)

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import AddPurchase from "./addPurchase";
 import '../index.css'
 import { api } from '../api'
-function OrderForm() {
+function OrderForm(props) {
  
     const [inputList, setInputList] = useState([]);
     const [id, setId] = useState(0);
@@ -40,7 +40,7 @@ function OrderForm() {
         
         const data = new FormData(document.getElementById("orderForm"))
         console.log(data);
-        const url = api.API_URL + 'Login';
+        const url = api.API_URL + 'purchase/'+props.ID;
         const value = Object.fromEntries(data.entries());
         console.log(JSON.stringify(value));
         const sendOrderData = async()=>{

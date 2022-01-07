@@ -107,9 +107,10 @@ function AddPurchase(props) {
 
     return (
         <div className="uk-grid-medium uk-child-width-expand@s " uk-grid="true">
+            <input name={"ProductId"+props.index} className="uk-input" type={"number"} type="hidden" value={productId} />
             <div className="inline">
-                <label className="uk-form-label">產品代號 :</label>
-                <input name={"ProductId"+props.index} className="uk-input" type={"number"} type="hidden" value={productId} />
+                <label className="uk-form-label">編號:</label>
+                <input className="uk-input" type={"number"} disabled={"disabled"} value={productId} />
             </div>
             <div className="inline">
                 <label className="uk-form-label">產品分類 :</label>
