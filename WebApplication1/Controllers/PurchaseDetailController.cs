@@ -135,7 +135,7 @@ namespace WebApplication1.Controllers
                 UnitPrice = _pod.UnitPrice
             });
 
-            return new JsonResult(1);
+            return new JsonResult(affectRows);
         }
 
         // DELETE api/<PurchaseDetailController>/5
