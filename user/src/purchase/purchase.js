@@ -13,7 +13,7 @@ function Purchase() {
       try {
         const response = await fetch(url);
         const json = await response.json();
-        console.log(json);
+       
         setpurchase(json.map((data, index) => {
           const date = new Date(data.PurchaseDate);
           const dateString = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();

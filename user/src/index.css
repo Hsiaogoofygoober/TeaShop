@@ -4,7 +4,9 @@
   align-items: center;
 }
 .background {
-  background-image: url(./img/background.jpg)
+  background-color: rgba(77, 67, 67, 0.384);
+  
+  
 }
 .plus_cycle {
   margin-left: 27%;
@@ -19,4 +21,19 @@
 }
 .priceColor{
   color:red;
+}
+.inline{
+  display:inline
+}
+.deletePos{
+  position: relative;
+  top: 27px; 
+}
+.addPos{
+  position: relative;
+  right: 15px; 
+}
+.submitPos{
+  position: relative;
+  left: 30%;  
 }
