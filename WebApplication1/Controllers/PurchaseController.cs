@@ -142,12 +142,24 @@ namespace WebApplication1.Controllers
                 PurchaseDate = _poh.PurchaseDate,
             });
 
+            string sqlstr1 = "SELECT PurchaseOrderId From [PurchaseOrderHeader]";
+            sqlstr1 += " WHERE SupplierID = @SupplierID AND PurchaseTotal = @PurchaseTotal AND PurchaseDate = @PurchaseDate";
+
+            var result = await Conn.QuerySingleOrDefaultAsync<PurchaseOrderHeader>(sqlstr1, new
+            {
+                SupplierID = _poh.SupplierId,
+                PurchaseTotal = _poh.PurchaseTotal,
+                PurchaseDate = _poh.PurchaseDate,
+            });
+
+            int purchaseId = result.PurchaseOrderId;
+
             if (Conn.State == ConnectionState.Open) 
             {
                 Conn.Close();
             }
 
-            return new JsonResult(affectRows);
+            return new JsonResult(purchaseId);
         }
 
         [HttpPut]

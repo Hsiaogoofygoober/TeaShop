@@ -96,7 +96,6 @@ namespace WebApplication1.Controllers
                     PurchaseQuantity = Convert.ToInt32(data.GetValue(productQuantity)),
                     UnitPrice = Convert.ToDecimal(data.GetValue(productPrice))
                 };
-
                 p1.Add(p);
             }
 
