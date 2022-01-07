@@ -10,6 +10,7 @@ const imgStyle = {
 function SignIn() {
     
     return (
+        
         <div className="uk-child-width-1-4@m uk-margin-medium-top center">
             <div className="uk-height-medium">
                 <div className="uk-card uk-card-default">
@@ -21,6 +22,7 @@ function SignIn() {
                 </div>
             </div>
         </div>
+        
     )
 }
 export default SignIn;
