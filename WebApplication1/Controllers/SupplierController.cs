@@ -39,5 +39,32 @@ namespace WebApplication1.Controllers
 
             return new JsonResult(result);
         }
+
+        [HttpPost]
+        public async Task<JsonResult> Create([FromBody]Supplier _s) 
+        {
+            var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+
+            IConfiguration config = configurationBuilder.Build();
+            string connectinoString = config["ConnectionStrings:DBConnectionString"];
+
+            var Conn = new SqlConnection(connectinoString);
+            Conn.Open();
+
+            string sqlstr = "INSERT INTO Supplier ([SupplierName])";
+            sqlstr += " VALUES (@SupplierName)";
+
+            int affectRows = await Conn.ExecuteAsync(sqlstr, new
+            {
+                SupplierName = _s.SupplierName
+            });
+
+            if (Conn.State == ConnectionState.Open)
+            {
+                Conn.Close();
+            }
+
+            return new JsonResult(affectRows);
+        }
     }
 }
