@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 #nullable disable
@@ -14,8 +15,13 @@ namespace WebApplication1.Models
             Stocks = new HashSet<Stock>();
         }
 
+        [JsonProperty("ProductId")]
         public int ProductId { get; set; }
+
+        [JsonProperty("Name")]
         public string Name { get; set; }
+
+        [JsonProperty("Type")]
         public string Type { get; set; }
         public string ProductCategory { get; set; }
         public string ProductPicture { get; set; }

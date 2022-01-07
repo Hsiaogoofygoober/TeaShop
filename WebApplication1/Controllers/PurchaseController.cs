@@ -54,7 +54,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(endData);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public JsonResult GetDetails(int id)
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
@@ -64,10 +64,6 @@ namespace WebApplication1.Controllers
 
             var Conn = new SqlConnection(connectinoString);
             Conn.Open();
-
-            //string sqlstr = "Select * From [PurchaseOrderDetail] Where PurchaseOrderId = @PurchaseOrderId";
-            //var parameter = new { PurchaseOrderId = id };
-            //IEnumerable<PurchaseOrderDetail> result = Conn.Query<PurchaseOrderDetail>(sqlstr, parameter);
 
             SqlDataReader dr = null;
             string sqlstr = "SELECT poh.PurchaseOrderID, poh.PurchaseDate, s.SupplierName, pod.ProductID, p.Type, p.ProductCategory, p.Name, pod.PurchaseQuantity, pod.UnitPrice FROM PurchaseOrderHeader AS poh";
@@ -146,13 +142,24 @@ namespace WebApplication1.Controllers
                 PurchaseDate = _poh.PurchaseDate,
             });
 
+            string sqlstr1 = "SELECT PurchaseOrderId From [PurchaseOrderHeader]";
+            sqlstr1 += " WHERE SupplierID = @SupplierID AND PurchaseTotal = @PurchaseTotal AND PurchaseDate = @PurchaseDate";
+
+            var result = await Conn.QuerySingleOrDefaultAsync<PurchaseOrderHeader>(sqlstr1, new
+            {
+                SupplierID = _poh.SupplierId,
+                PurchaseTotal = _poh.PurchaseTotal,
+                PurchaseDate = _poh.PurchaseDate,
+            });
+
+            int purchaseId = result.PurchaseOrderId;
 
             if (Conn.State == ConnectionState.Open) 
             {
                 Conn.Close();
             }
 
-            return new JsonResult(affectRows);
+            return new JsonResult(purchaseId);
         }
 
         [HttpPut]
@@ -185,7 +192,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(affectRows);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<JsonResult> DeletePurchaseHeader(int id)
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
