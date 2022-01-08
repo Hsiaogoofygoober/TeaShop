@@ -89,6 +89,11 @@ namespace WebApplication1.Controllers
                 string productQuantity = "PurchaseQuantity" + i;
                 string productPrice = "UnitPrice" + i;
 
+                if (data.GetValue(productId) == null || data.GetValue(productQuantity) == null)
+                {
+                    return new JsonResult(0);
+                }
+
                 PurchaseOrderDetail p = new PurchaseOrderDetail
                 {
                     PurchaseOrderId = id,
@@ -96,6 +101,7 @@ namespace WebApplication1.Controllers
                     PurchaseQuantity = Convert.ToInt32(data.GetValue(productQuantity)),
                     UnitPrice = Convert.ToDecimal(data.GetValue(productPrice))
                 };
+
                 p1.Add(p);
             }
 
