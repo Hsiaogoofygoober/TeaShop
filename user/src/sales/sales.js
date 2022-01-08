@@ -18,27 +18,27 @@ function Sales() {
         const json = await response.json();
        
         setpurchase(json.map((data, index) => {
-          const date = new Date(data.PurchaseDate);
+          const date = new Date(data.SalesDate);
           const month = date.getMonth()+1;
           const dateString = date.getFullYear() + "-" +month+ "-" + date.getDate();
           return (
 
-            <tr key={data.PurchaseOrderId}>
-              <td>{data.PurchaseOrderId}</td>
+            <tr key={data.SalesOrderId}>
+              <td>{data.SalesOrderId}</td>
               <td>{dateString}</td>
-              <td>{data.Supplier.SupplierName}</td>
-              <td>{data.PurchaseTotal}</td>
+              <td>{data.Customer}</td>
+              <td>{data.SalesTotal}</td>
               <td>
-                <a className="uk-button uk-button-default" uk-toggle={"target: #ID" + data.PurchaseOrderId} onClick={() => setID(data.PurchaseOrderId)}>訂單詳情</a>
-                <div id={"ID" + data.PurchaseOrderId} uk-modal="true" className="uk-modal-container" >
+                <a className="uk-button uk-button-default" uk-toggle={"target: #ID" + data.SalesOrderId} onClick={() => setID(data.SalesOrderId)}>訂單詳情</a>
+                <div id={"ID" + data.SalesOrderId} uk-modal="true" className="uk-modal-container" >
                   <div className="uk-modal-dialog ">
 
                     <button className="uk-modal-close-default" type="button" uk-close="true"></button>
 
                     <div className="uk-modal-header">
-                      <p>進貨單編號 : {data.PurchaseOrderId}</p>
+                      <p>進貨單編號 : {data.SalesOrderId}</p>
                       <p>訂購日期 : {dateString}</p>
-                      <p>供應商 : {data.Supplier.SupplierName}</p>
+                      <p>供應商 : {data.Customer}</p>
                     </div>
 
                     <div className="uk-modal-body" uk-overflow-auto="true">
@@ -70,7 +70,7 @@ function Sales() {
 
               <td><a href="" uk-icon="pencil"></a></td>
               <td><button uk-icon="ban" onClick={()=>{
-                DeleteSales(data.PurchaseOrderId)
+                DeleteSales(data.SalesOrderId)
           
                 }}></button></td>
 
