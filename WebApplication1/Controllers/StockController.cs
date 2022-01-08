@@ -30,7 +30,7 @@ namespace WebApplication1.Controllers
             Conn.Open();
 
             SqlDataReader dr = null;
-            string sqlstr = "Select p.ProductId, p.Name, p.Type, p.ProductCategory, s.StockAmount";
+            string sqlstr = "Select p.ProductId, p.Name, p.Type, p.ProductCategory, s.StockId, s.StockAmount";
             sqlstr += " From [Product] AS p INNER JOIN [Stock] AS s ON p.ProductId = s.ProductId";
 
             //var endData = Conn.Query<Product, Stock, Product>(
@@ -62,6 +62,7 @@ namespace WebApplication1.Controllers
 
                 Stock s = new Stock
                 {
+                    StockId = Convert.ToInt32(dr["StockId"]),
                     StockAmount = Convert.ToInt32(dr["StockAmount"]),
                 };
 
