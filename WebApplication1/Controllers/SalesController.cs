@@ -3,12 +3,13 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.IO;
-using WebApplication1.Models;
-using Dapper;
-using static Dapper.SqlMapper;
 using System.Data;
 using System.Threading.Tasks;
 using System;
+using WebApplication1.Models;
+using Dapper;
+using static Dapper.SqlMapper;
+
 
 namespace WebApplication1.Controllers
 {
@@ -118,6 +119,45 @@ namespace WebApplication1.Controllers
             {
                 Customer = _soh.Customer,
                 SalesTotal = _soh.SalesTotal,
+            });
+
+            string sqlstr1 = "SELECT TOP 1 SalesOrderID FROM SalesOrderHeader ORDER BY SalesOrderID desc";
+
+            var result = await Conn.QuerySingleOrDefaultAsync<SalesOrderHeader>(sqlstr1, Conn);
+
+            if (result == null)
+            {
+                return new JsonResult("沒有找到資料!!!");
+            }
+
+            int salesId = result.SalesOrderId;
+
+            if (Conn.State == ConnectionState.Open)
+            {
+                Conn.Close();
+            }
+
+            return new JsonResult(salesId);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> CreateSalesHeader([FromBody]SalesOrderHeader _soh)
+        {
+            var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+
+            IConfiguration config = configurationBuilder.Build();
+            string connectinoString = config["ConnectionStrings:DBConnectionString"];
+
+            var Conn = new SqlConnection(connectinoString);
+            Conn.Open();
+
+            string sqlstr = "INSERT INTO [SalesOrderHeader] ([Customer], [SalesTotal])";
+            sqlstr += " VALUES (@Customer, @SalesTotal)";
+
+            int affectRows = await Conn.ExecuteAsync(sqlstr, new
+            {
+                Customer = _soh.Customer,
+                SalesTotal = _soh.SalesTotal
             });
 
             string sqlstr1 = "SELECT TOP 1 SalesOrderID FROM SalesOrderHeader ORDER BY SalesOrderID desc";
