@@ -130,15 +130,15 @@ function Sales() {
 
   return (
     <div className="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-position-top-center uk-position-large">
-      <p><span className="priceFont">所有訂貨單</span><span  className="uk-position-top-right uk-position-medium"><Link to="salesFormHeader" className="plus_cycle"  uk-icon="icon: plus-circle; ratio: 1.5"></Link></span></p>
+      <p><span className="priceFont">所有出貨單</span><span  className="uk-position-top-right uk-position-medium"><Link to="salesFormHeader" className="plus_cycle"  uk-icon="icon: plus-circle; ratio: 1.5"></Link></span></p>
       <table className="uk-table uk-table-hover uk-table-divider">
         <thead>
           <tr>
-            <th>訂貨單編號</th>
+            <th>出貨單編號</th>
             <th>日期</th>
-            <th>供應商</th>
+            <th>客戶</th>
             <th>總價錢</th>
-            <th>訂單詳情</th>
+            <th>出貨單詳情</th>
             <th>修改</th>
             <th>刪除</th>
           </tr>
