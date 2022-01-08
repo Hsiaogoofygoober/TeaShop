@@ -8,6 +8,7 @@ function AddPurchaseHeader() {
     const [supplierList,setSupplierList] = useState(<option>loading</option>);
     const [supplierName,setSupplierName] = useState('');
     const [selectId,setSelectId] = useState(0);
+
     const [supplierId,setSupplierId] = useState([1,2,3]);
     const [purchaseId,setPurchseId] = useState(0);
     const handleSubmit = (e) => {

@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { api } from '../api';
 import SalesForm from "./salesForm";
 import { Link } from "react-router-dom";
+import Navbar from "../navbar/navbar";
 import '../index.css'
 function AddSalesHeader() {
     const [submitType, setSubmitType] = useState("submit");
@@ -39,7 +40,9 @@ function AddSalesHeader() {
 
    
     return (
-        <div className="uk-card uk-card-default uk-card-body uk-width-2-3@m uk-position-top-center uk-position-large">
+        <div>
+        <Navbar/>
+        <div className="uk-card uk-card-default uk-card-body uk-width-2-3@m uk-position-top-center uk-position-large uk-position-relative">
             <p><Link to="/Sales" uk-icon="icon:  arrow-left; ratio: 1.5"></Link> <span className="uk-card-title uk-position-medium uk-position-top-center">出貨單</span></p>
            
             <form id="salesFormHeader" className="uk-form-horizontal uk-margin-large" onSubmit={handleSubmit}>
@@ -48,7 +51,7 @@ function AddSalesHeader() {
                     
                     <div className="uk-margin">
                     <label className="uk-form-label" >客戶</label>
-                    <input name="CostommerId" className="uk-input uk-form-width-medium" type="text" />
+                    <input name="Customer" className="uk-input uk-form-width-medium" type="text" />
                     
                     </div>
                     <div className="uk-margin">
@@ -62,6 +65,7 @@ function AddSalesHeader() {
                 </fieldset>
             </form>
             <SalesForm ID={purchaseId}/>
+        </div>
         </div>
     )
 }

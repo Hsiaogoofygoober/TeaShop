@@ -147,7 +147,7 @@ function AddSales(props) {
             </div>
             <div  className="inline" >
                 <label className="uk-form-label">數量 : </label>
-                <input name={"PurchaseQuantity"+props.index} id={"amount" + props.index} className="uk-input" type={"number"} onChange={(e) => setAmount(e.target.value)} />
+                <input name={"SalesQuantity"+props.index} id={"amount" + props.index} className="uk-input" type={"number"} onChange={(e) => setAmount(e.target.value)} />
             </div>
             <div className="inline" >
                 <label className="uk-form-label">單價 : </label>

@@ -3,6 +3,7 @@ import { api } from '../api';
 import { Link } from "react-router-dom";
 import '../index.css';
 import DeletePurchase from "./deletePurchase";
+import Navbar from "../navbar/navbar";
 function Purchase() {
   const [total, setTotal] = useState(0);
   const [checkDelete,setCheckDelete] = useState(0);
@@ -129,7 +130,9 @@ function Purchase() {
   }, [total])
 
   return (
-    <div className="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-position-top-center uk-position-large">
+    <div>
+    <Navbar/>
+    <div className="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-position-top-center uk-position-large uk-position-relative">
       <p><span className="priceFont">所有訂貨單</span><span  className="uk-position-top-right uk-position-medium"><Link to="orderFormHeader" className="plus_cycle"  uk-icon="icon: plus-circle; ratio: 1.5"></Link></span></p>
       <table className="uk-table uk-table-hover uk-table-divider">
         <thead>
@@ -147,6 +150,7 @@ function Purchase() {
           {purchase}
         </tbody>
       </table>
+    </div>
     </div>
   )
 

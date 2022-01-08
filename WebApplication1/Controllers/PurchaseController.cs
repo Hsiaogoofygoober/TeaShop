@@ -132,8 +132,8 @@ namespace WebApplication1.Controllers
             var Conn = new SqlConnection(connectinoString);
             Conn.Open();
 
-            string sqlstr = "INSERT INTO [PurchaseOrderHeader] ([SupplierID], [PurchaseTotal], [PurchaseDate])";
-            sqlstr += " VALUES (@SupplierID, @PurchaseTotal, @PurchaseDate)";
+            string sqlstr = "INSERT INTO [PurchaseOrderHeader] ([SupplierID], [PurchaseTotal])";
+            sqlstr += " VALUES (@SupplierID, @PurchaseTotal)";
 
             int affectRows = await Conn.ExecuteAsync(sqlstr, new
             {

@@ -3,6 +3,7 @@ import { api } from '../api';
 import { Link } from "react-router-dom";
 import '../index.css';
 import DeleteSales from "./deleteSales";
+import Navbar from "../navbar/navbar";
 function Sales() {
   const [total, setTotal] = useState(0);
   const [checkDelete,setCheckDelete] = useState(0);
@@ -36,9 +37,9 @@ function Sales() {
                     <button className="uk-modal-close-default" type="button" uk-close="true"></button>
 
                     <div className="uk-modal-header">
-                      <p>進貨單編號 : {data.SalesOrderId}</p>
-                      <p>訂購日期 : {dateString}</p>
-                      <p>供應商 : {data.Customer}</p>
+                      <p>出貨單編號 : {data.SalesOrderId}</p>
+                      <p>出貨日期 : {dateString}</p>
+                      <p>客戶 : {data.Customer}</p>
                     </div>
 
                     <div className="uk-modal-body" uk-overflow-auto="true">
@@ -61,7 +62,7 @@ function Sales() {
                       <hr className=" uk-position-medium"/>
                       
                       <p className="uk-position-bottom-right uk-position-medium priceFont">原定總價 : {total}</p>
-                      <p className="uk-position-bottom-right uk-position-medium priceFont">折扣價 :<span className="priceColor">{data.PurchaseTotal}</span> </p>
+                      <p className="uk-position-bottom-right uk-position-medium priceFont">折扣價 :<span className="priceColor">{data.SalesTotal}</span> </p>
                     </div>
 
                   </div>
@@ -96,7 +97,7 @@ function Sales() {
         console.log(detailJson);
         setpurchaseDetail(
           detailJson.map((detailData, index) => {
-            setTotal(total => total + detailData.PodVM.UnitPrice * detailData.PodVM.PurchaseQuantity);
+            setTotal(total => total + detailData.SODVM.UnitPrice * detailData.SODVM.SalesQuantity);
 
             return (
               <tr key={index}>
@@ -104,9 +105,9 @@ function Sales() {
                 <td>{detailData.PVM.Type}</td>
                 <td>{detailData.PVM.ProductCategory}</td>
                 <td>{detailData.PVM.Name}</td>
-                <td>{detailData.PodVM.PurchaseQuantity}</td>
-                <td>{detailData.PodVM.UnitPrice}</td>
-                <td>{detailData.PodVM.UnitPrice * detailData.PodVM.PurchaseQuantity}</td>
+                <td>{detailData.SODVM.SalesQuantity}</td>
+                <td>{detailData.SODVM.UnitPrice}</td>
+                <td>{detailData.SODVM.UnitPrice * detailData.SODVM.SalesQuantity}</td>
               </tr>
             )
           }
@@ -129,7 +130,9 @@ function Sales() {
   }, [total])
 
   return (
-    <div className="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-position-top-center uk-position-large">
+    <div>
+    <Navbar/>
+    <div className="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-position-top-center uk-position-large uk-position-relative">
       <p><span className="priceFont">所有出貨單</span><span  className="uk-position-top-right uk-position-medium"><Link to="salesFormHeader" className="plus_cycle"  uk-icon="icon: plus-circle; ratio: 1.5"></Link></span></p>
       <table className="uk-table uk-table-hover uk-table-divider">
         <thead>
@@ -147,6 +150,7 @@ function Sales() {
           {purchase}
         </tbody>
       </table>
+    </div>
     </div>
   )
 
