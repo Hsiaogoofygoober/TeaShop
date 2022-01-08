@@ -132,24 +132,23 @@ namespace WebApplication1.Controllers
             var Conn = new SqlConnection(connectinoString);
             Conn.Open();
 
-            string sqlstr = "INSERT INTO [PurchaseOrderHeader] ([SupplierID], [PurchaseTotal])";
-            sqlstr += " VALUES (@SupplierID, @PurchaseTotal)";
+            string sqlstr = "INSERT INTO [PurchaseOrderHeader] ([SupplierID], [PurchaseTotal], [PurchaseDate])";
+            sqlstr += " VALUES (@SupplierID, @PurchaseTotal, @PurchaseDate)";
 
             int affectRows = await Conn.ExecuteAsync(sqlstr, new
             {
-                SupplierID = _poh.SupplierId,
+                SupplierId = _poh.SupplierId,
                 PurchaseTotal = _poh.PurchaseTotal,
             });
 
-            string sqlstr1 = "SELECT PurchaseOrderId From [PurchaseOrderHeader]";
-            sqlstr1 += " WHERE SupplierID = @SupplierID AND PurchaseTotal = @PurchaseTotal AND PurchaseDate = @PurchaseDate";
+            string sqlstr1 = "SELECT TOP 1 PurchaseOrderID FROM PurchaseOrderHeader ORDER BY PurchaseOrderID desc";
 
-            var result = await Conn.QuerySingleOrDefaultAsync<PurchaseOrderHeader>(sqlstr1, new
+            var result = await Conn.QuerySingleOrDefaultAsync<PurchaseOrderHeader>(sqlstr1, Conn);
+            
+            if (result == null) 
             {
-                SupplierID = _poh.SupplierId,
-                PurchaseTotal = _poh.PurchaseTotal,
-                PurchaseDate = _poh.PurchaseDate,
-            });
+                return new JsonResult("沒有找到資料!!!");
+            }
 
             int purchaseId = result.PurchaseOrderId;
 
@@ -180,6 +179,7 @@ namespace WebApplication1.Controllers
                 PurchaseOrderId = _poh.PurchaseOrderId,
                 SupplierId = _poh.SupplierId,
                 PurchaseTotal = _poh.PurchaseTotal,
+                PurchaseDate = _poh.PurchaseDate
             });
 
             if (Conn.State == ConnectionState.Open)
@@ -200,7 +200,7 @@ namespace WebApplication1.Controllers
 
             var Conn = new SqlConnection(connectinoString);
             Conn.Open();
-
+            
             string sqlstr = "DELETE FROM PurchaseOrderHeader";
             sqlstr += " WHERE PurchaseOrderId = @PurchaseOrderId";
 

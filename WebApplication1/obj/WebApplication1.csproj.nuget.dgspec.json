@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TeaShop\\WebApplication1\\WebApplication1.csproj": {}
+    "D:\\程式設計\\Asp.net\\React_WebAPI\\TeaShop\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "D:\\TeaShop\\WebApplication1\\WebApplication1.csproj": {
+    "D:\\程式設計\\Asp.net\\React_WebAPI\\TeaShop\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TeaShop\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "D:\\程式設計\\Asp.net\\React_WebAPI\\TeaShop\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "D:\\TeaShop\\WebApplication1\\WebApplication1.csproj",
-        "packagesPath": "C:\\Users\\za135\\.nuget\\packages\\",
-        "outputPath": "D:\\TeaShop\\WebApplication1\\obj\\",
+        "projectPath": "D:\\程式設計\\Asp.net\\React_WebAPI\\TeaShop\\WebApplication1\\WebApplication1.csproj",
+        "packagesPath": "C:\\Users\\abc96\\.nuget\\packages\\",
+        "outputPath": "D:\\程式設計\\Asp.net\\React_WebAPI\\TeaShop\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\visual2019\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\za135\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\abc96\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

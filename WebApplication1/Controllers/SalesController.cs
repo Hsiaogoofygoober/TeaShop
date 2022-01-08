@@ -7,6 +7,7 @@ using WebApplication1.Models;
 using Dapper;
 using static Dapper.SqlMapper;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace WebApplication1.Controllers
 {
@@ -16,7 +17,7 @@ namespace WebApplication1.Controllers
     {
 
         [HttpGet]
-        public JsonResult Get()
+        public async Task<JsonResult> Get()
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 
@@ -27,7 +28,7 @@ namespace WebApplication1.Controllers
             Conn.Open();
 
             string sqlstr = "Select * From [SalesOrderHeader]";
-            IEnumerable<SalesOrderHeader> result = Conn.Query<SalesOrderHeader>(sqlstr, Conn);
+            IEnumerable<SalesOrderHeader> result = await Conn.QueryAsync<SalesOrderHeader>(sqlstr, Conn);
 
             if (Conn.State == ConnectionState.Open)
             {
@@ -38,7 +39,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet("{id}")]
-        public JsonResult GetDetails(int id) 
+        public async Task<JsonResult> GetDetails(int id) 
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 
@@ -50,7 +51,7 @@ namespace WebApplication1.Controllers
 
             string sqlstr = "Select * From [SalesOrderDetail] Where SalesOrderId = @SalesOrderId";
             var parameter = new { SalesOrderId = id };
-            IEnumerable<SalesOrderDetail> result = Conn.Query<SalesOrderDetail>(sqlstr, parameter);
+            IEnumerable<SalesOrderDetail> result = await Conn.QueryAsync<SalesOrderDetail>(sqlstr, parameter);
 
             if (Conn.State == ConnectionState.Open)
             {
@@ -58,6 +59,33 @@ namespace WebApplication1.Controllers
             }
 
             return new JsonResult(result);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<JsonResult> DeleteSalesHeader(int id)
+        {
+            var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+
+            IConfiguration config = configurationBuilder.Build();
+            string connectinoString = config["ConnectionStrings:DBConnectionString"];
+
+            var Conn = new SqlConnection(connectinoString);
+            Conn.Open();
+
+            string sqlstr = "DELETE FROM SalesOrderHeader";
+            sqlstr += " WHERE SalesOrderId = @SalesOrderId";
+
+            int affectRows = await Conn.ExecuteAsync(sqlstr, new
+            {
+                SalesOrderId = id
+            });
+
+            if (Conn.State == ConnectionState.Open)
+            {
+                Conn.Close();
+            }
+
+            return new JsonResult(affectRows);
         }
     }
 }
