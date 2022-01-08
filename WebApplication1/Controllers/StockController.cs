@@ -29,28 +29,58 @@ namespace WebApplication1.Controllers
             var Conn = new SqlConnection(connectinoString);
             Conn.Open();
 
-            string sqlstr = "Select p.ProductId, p.Name, p.Type, p.ProductCategory, s.ProductId, s.StockId, s.StockAmount";
-            sqlstr += " From [Stock] AS s INNER JOIN [Product] AS p ON p.ProductId = s.ProductId";
+            SqlDataReader dr = null;
+            string sqlstr = "Select p.ProductId, p.Name, p.Type, p.ProductCategory, s.StockAmount";
+            sqlstr += " From [Product] AS p INNER JOIN [Stock] AS s ON p.ProductId = s.ProductId";
 
-            var resultDictionary = new Dictionary<int, Stock>();
-            
-            var endData = Conn.Query<Stock, Product, Stock>(
-                    //             *** 一對多的兩個關聯式資料表      *** 仍用第一個資料表 
-                    sqlstr,
-                    (s, p) =>
-                    {
-                        s.Product = p;
-                        return s;
-                    },
-                    splitOn: "ProductId") // 重點!! "一對多"兩個關聯式資料表，表示"多"的那個(學生)資料表的ID(Key)
-                    .Distinct();    // 加上這一段，可以把「重複的科系」資料取消，如果不加上這一句，「科系」會重複出現。
+            //var endData = Conn.Query<Product, Stock, Product>(
+            //        //             *** 一對多的兩個關聯式資料表      *** 仍用第一個資料表 
+            //        sqlstr,
+            //        (p, s) =>
+            //        {
+            //            p.Stocks = s;
+            //            return p;
+            //        },
+            //        splitOn: "ProductId") // 重點!! "一對多"兩個關聯式資料表，表示"多"的那個(學生)資料表的ID(Key)
+            //        .Distinct();    // 加上這一段，可以把「重複的科系」資料取消，如果不加上這一句，「科系」會重複出現。
+
+            SqlCommand cmd = new SqlCommand(sqlstr, Conn);
+            dr = cmd.ExecuteReader();
+
+            List<PSViewModel> resultViewModel = new List<PSViewModel>();
+
+            while (dr.Read())
+            {
+                Product p = new Product
+                {
+                    ProductId = Convert.ToInt32(dr["ProductId"]),
+                    Name = dr["Name"].ToString(),
+                    Type = dr["Type"].ToString(),
+                    ProductCategory = dr["ProductCategory"].ToString(),
+
+                };
+
+                Stock s = new Stock
+                {
+                    StockAmount = Convert.ToInt32(dr["StockAmount"]),
+                };
+
+                resultViewModel.Add(new PSViewModel { PVM = p, SVM = s});
+            }
+
+            if (dr != null)
+            {
+                cmd.Cancel();
+                dr.Close();
+            }
+
 
             if (Conn.State == ConnectionState.Open)
             {
                 Conn.Close();
             }
 
-            return new JsonResult(endData);
+            return new JsonResult(resultViewModel);
         }
 
 
