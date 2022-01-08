@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { api } from '../api';
-import { Link , useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../index.css';
-import DeletePurchase from "./deletePurchase";
-function Purchase() {
+import DeleteSales from "./deleteSales";
+function Sales() {
   const [total, setTotal] = useState(0);
   const [checkDelete,setCheckDelete] = useState(0);
   const [purchaseDetail, setpurchaseDetail] = useState(<tr><td>loading</td></tr>);
   const [purchase, setpurchase] = useState(<tr><td>loading</td></tr>);
   const [ID, setID] = useState(0);
-  const url = api.API_URL + 'Purchase';
+  const url = api.API_URL + 'Sales';
   console.log(purchaseDetail);
   useEffect(() => {
     const fetchData = async () => {
@@ -70,7 +70,7 @@ function Purchase() {
 
               <td><a href="" uk-icon="pencil"></a></td>
               <td><button uk-icon="ban" onClick={()=>{
-                DeletePurchase(data.PurchaseOrderId)
+                DeleteSales(data.PurchaseOrderId)
           
                 }}></button></td>
 
@@ -130,7 +130,7 @@ function Purchase() {
 
   return (
     <div className="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-position-top-center uk-position-large">
-      <p><span className="priceFont">所有訂貨單</span><span  className="uk-position-top-right uk-position-medium"><Link to="orderFormHeader" className="plus_cycle"  uk-icon="icon: plus-circle; ratio: 1.5"></Link></span></p>
+      <p><span className="priceFont">所有訂貨單</span><span  className="uk-position-top-right uk-position-medium"><Link to="salesFormHeader" className="plus_cycle"  uk-icon="icon: plus-circle; ratio: 1.5"></Link></span></p>
       <table className="uk-table uk-table-hover uk-table-divider">
         <thead>
           <tr>
@@ -152,4 +152,4 @@ function Purchase() {
 
 }
 
-export default Purchase;
+export default Sales;

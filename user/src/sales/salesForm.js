@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import AddPurchase from "./addPurchase";
+import AddSales from "./addSales";
 import '../index.css'
 import { api } from '../api'
-function OrderForm(props) {
+function SalesForm(props) {
  
     const [inputList, setInputList] = useState([]);
     const [id, setId] = useState(0);
@@ -18,7 +18,7 @@ function OrderForm(props) {
         setInputList(
             inputList.concat(
                 <div key={key}>
-                    <AddPurchase index={key} setId={setId} productJson={productJson}/>
+                    <AddSales index={key} setId={setId} productJson={productJson}/>
                 </div>
             )
         );
@@ -38,9 +38,9 @@ function OrderForm(props) {
         let json = false;
         e.preventDefault();
         
-        const data = new FormData(document.getElementById("orderForm"))
+        const data = new FormData(document.getElementById("salesForm"))
         console.log(data);
-        const url = api.API_URL + 'purchaseDetail/'+props.ID;
+        const url = api.API_URL + 'salesDetail/'+props.ID;
         console.log(url);
         const value = Object.fromEntries(data.entries());
         console.log(JSON.stringify(value));
@@ -88,7 +88,7 @@ function OrderForm(props) {
 
     return (
         
-            <form id="orderForm" className="uk-form-horizontal uk-margin-large"  onSubmit={handleSubmit}>
+            <form id="salesForm" className="uk-form-horizontal uk-margin-large"  onSubmit={handleSubmit}>
                
                 <fieldset className="uk-fieldset">
                         
@@ -104,4 +104,4 @@ function OrderForm(props) {
     )
 }
 
-export default OrderForm;
+export default SalesForm;

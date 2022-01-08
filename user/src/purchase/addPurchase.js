@@ -34,7 +34,6 @@ function AddPurchase(props) {
         else {
             setProductCategory(
                 <optgroup>
-
                     <option>紅茶</option>
                     <option>綠茶</option>
                     <option>青茶</option>
@@ -47,11 +46,14 @@ function AddPurchase(props) {
     }
     function getProductName(){
         setproductName(props.productJson.map((data, index) => {
-            if(data.Type === type && data.ProductCategory === category){
-                return (
-                    <option key={index}>{data.Name}</option>
-                )
-            }
+            
+                if(data.Type === type && data.ProductCategory === category){
+                    setName(data.Name)
+                    return (
+                        <option key={index}>{data.Name}</option>
+                    )
+                }
+            
         }))
     }
 
@@ -110,7 +112,7 @@ function AddPurchase(props) {
             <input name={"ProductId"+props.index} className="uk-input" type={"number"} type="hidden" value={productId} />
             <div className="inline">
                 <label className="uk-form-label">編號:</label>
-                <input className="uk-input" type={"number"} disabled={"disabled"} value={productId} />
+                <input name={"ProductId"+props.index} className="uk-input" type={"number"} disabled={"disabled"} value={productId} />
             </div>
             <div className="inline">
                 <label className="uk-form-label">產品分類 :</label>

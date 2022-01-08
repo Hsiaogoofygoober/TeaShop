@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { api } from '../api';
-import OrderForm from "./orderForm";
+import SalesForm from "./salesForm";
 import { Link } from "react-router-dom";
 import '../index.css'
-function AddPurchaseHeader() {
+function AddSalesHeader() {
     const [submitType, setSubmitType] = useState("submit");
     const [supplierList,setSupplierList] = useState(<option>loading</option>);
     const [supplierName,setSupplierName] = useState('');
@@ -14,9 +14,9 @@ function AddPurchaseHeader() {
         let json = false;
         e.preventDefault();
 
-        const data = new FormData(document.getElementById("orderFormHeader"))
+        const data = new FormData(document.getElementById("salesFormHeader"))
         console.log(data);
-        const url = api.API_URL + 'purchase';
+        const url = api.API_URL + 'sales';
         const value = Object.fromEntries(data.entries());
         console.log(JSON.stringify(value));
         const sendOrderData = async () => {
@@ -46,7 +46,7 @@ function AddPurchaseHeader() {
         console.log(e.target)
     }
     useEffect(() => {
-        const url = api.API_URL + 'supplier';
+        const url = api.API_URL + 'costommer';
 
         const fetchData = async () => {
             try {
@@ -72,20 +72,20 @@ function AddPurchaseHeader() {
    
     return (
         <div className="uk-card uk-card-default uk-card-body uk-width-2-3@m uk-position-top-center uk-position-large">
-            <p><Link to="/Purchase" uk-icon="icon:  arrow-left; ratio: 1.5"></Link> <span className="uk-card-title uk-position-medium uk-position-top-center">訂貨單</span></p>
+            <p><Link to="/Sales" uk-icon="icon:  arrow-left; ratio: 1.5"></Link> <span className="uk-card-title uk-position-medium uk-position-top-center">出貨單</span></p>
            
-            <form id="orderFormHeader" className="uk-form-horizontal uk-margin-large" onSubmit={handleSubmit}>
+            <form id="salesFormHeader" className="uk-form-horizontal uk-margin-large" onSubmit={handleSubmit}>
 
                 <fieldset className="uk-fieldset">
                     <input name="SupplierId" className="uk-input" type="hidden" value={supplierId.at(selectId)} />
                     <div className="uk-margin">
-                    <label className="uk-form-label" >廠商</label>
+                    <label className="uk-form-label" >客戶</label>
                     <select  className="uk-select uk-form-width-medium" onChange={(e)=>setSelectId(supplierName.findIndex((element)=> element === e.target.value)) }>
                     {supplierList}
                     </select>
                     </div>
                     <div className="uk-margin">
-                        <label className="uk-form-label" >購買總價</label>
+                        <label className="uk-form-label" >出售總價</label>
                         <input name="PurchaseTotal" className="uk-input uk-form-width-medium" type="number" />
                     </div>
                     <div className="uk-margin">
@@ -94,8 +94,8 @@ function AddPurchaseHeader() {
                     </div>
                 </fieldset>
             </form>
-            <OrderForm ID={purchaseId}/>
+            <SalesForm ID={purchaseId}/>
         </div>
     )
 }
-export default AddPurchaseHeader;
+export default AddSalesHeader;

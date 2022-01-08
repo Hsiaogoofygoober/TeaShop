@@ -4,8 +4,10 @@ import './index.css';
 import SignIn from './signIn/signIn';
 import SignUp from './signUp/signUp';
 import Purchase from './purchase/purchase';
-import OrderForm from './purchase/orderForm';
+
 import AddPurchaseHeader from './purchase/addPurchaseHeader';
+import Sales from './sales/sales';
+import AddSalesHeader from './sales/addSalesHeader';
 //import Stock from './stock/stock';
 
 import {
@@ -21,8 +23,9 @@ ReactDOM.render(
   <Route path="/" element={<SignIn/>} />
   <Route path="SignUp" element={<SignUp/>} />
   <Route path="Purchase" element={<Purchase/>} />
-  <Route path="Purchase/orderFormHeader/orderForm" element={<OrderForm/>} />
   <Route path="Purchase/orderFormHeader" element={<AddPurchaseHeader/>} />
+  <Route path="Sales" element={<Sales/>} />
+  <Route path="Sales/salesFormHeader" element={<AddSalesHeader/>} />
   </Routes>
   </BrowserRouter>
   ,
