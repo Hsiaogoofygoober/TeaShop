@@ -17,7 +17,7 @@ namespace WebApplication1.Controllers
     {
 
         [HttpGet]
-        public JsonResult Get()
+        public async Task<JsonResult> Get()
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 
@@ -28,7 +28,7 @@ namespace WebApplication1.Controllers
             Conn.Open();
 
             string sqlstr = "Select * From [SalesOrderHeader]";
-            IEnumerable<SalesOrderHeader> result = Conn.Query<SalesOrderHeader>(sqlstr, Conn);
+            IEnumerable<SalesOrderHeader> result = await Conn.QueryAsync<SalesOrderHeader>(sqlstr, Conn);
 
             if (Conn.State == ConnectionState.Open)
             {
@@ -39,7 +39,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet("{id}")]
-        public JsonResult GetDetails(int id) 
+        public async Task<JsonResult> GetDetails(int id) 
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 
@@ -51,7 +51,7 @@ namespace WebApplication1.Controllers
 
             string sqlstr = "Select * From [SalesOrderDetail] Where SalesOrderId = @SalesOrderId";
             var parameter = new { SalesOrderId = id };
-            IEnumerable<SalesOrderDetail> result = Conn.Query<SalesOrderDetail>(sqlstr, parameter);
+            IEnumerable<SalesOrderDetail> result = await Conn.QueryAsync<SalesOrderDetail>(sqlstr, parameter);
 
             if (Conn.State == ConnectionState.Open)
             {

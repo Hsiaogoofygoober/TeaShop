@@ -20,7 +20,7 @@ namespace WebApplication1.Controllers
     public class SalesDetailController : ControllerBase
     {
         [HttpPost("{id:int}")]
-        public JsonResult Create(int id, [FromBody] JObject data)
+        public JsonResult Create(int id,[FromBody]JObject data)
         {
             var configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
 
