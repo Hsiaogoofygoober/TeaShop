@@ -4,7 +4,7 @@ import Navbar from "../navbar/navbar";
 function Stock() {
     const [stock, setStock] = useState();
     useEffect(() => {
-        const url = api.API_URL + 'supplier';
+        const url = api.API_URL + 'stock';
 
         const fetchData = async () => {
             try {
@@ -12,13 +12,14 @@ function Stock() {
                 const json = await response.json();
 
                 console.log(json);
-                setStock(json.map(data =>
-                    <tr key={data.StockId}>
-                        <td>{data.StockId}</td>
-                        <td>{data.Product.Type}</td>
-                        <td>{date.Product.ProductCategory}</td>
-                        <td>{data.Product.Name}</td>
-                        <td>{dataStockAmount}</td>
+                setStock(json.map((data,index) =>
+                    <tr key={data.PVM.ProductId}>
+                        <td>{index+1}</td>
+                        <td>{data.PVM.ProductId}</td>
+                        <td>{data.PVM.Type}</td>
+                        <td>{data.PVM.ProductCategory}</td>
+                        <td>{data.PVM.Name}</td>
+                        <td>{data.SVM.StockAmount}</td>
                     </tr>
                 ))
 
@@ -38,7 +39,7 @@ function Stock() {
                 <table className="uk-table uk-table-hover uk-table-divider">
                     <thead>
                         <tr>
-                            <th>庫存編號</th>
+                            <th>編號</th>
                             <th>產品代號</th>
                             <th>產品分類</th>
                             <th>產品類別</th>

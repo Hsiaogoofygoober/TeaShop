@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { api } from '../api';
 import OrderForm from "./orderForm";
 import { Link } from "react-router-dom";
+import Navbar from "../navbar/navbar";
 import '../index.css'
 function AddPurchaseHeader() {
     const [submitType, setSubmitType] = useState("submit");
@@ -72,7 +73,9 @@ function AddPurchaseHeader() {
    
    
     return (
-        <div className="uk-card uk-card-default uk-card-body uk-width-2-3@m uk-position-top-center uk-position-large">
+        <div>
+        <Navbar/>
+        <div className="uk-card uk-card-default uk-card-body uk-width-2-3@m uk-position-top-center uk-position-large uk-position-relative">
             <p><Link to="/Purchase" uk-icon="icon:  arrow-left; ratio: 1.5"></Link> <span className="uk-card-title uk-position-medium uk-position-top-center">訂貨單</span></p>
            
             <form id="orderFormHeader" className="uk-form-horizontal uk-margin-large" onSubmit={handleSubmit}>
@@ -96,6 +99,7 @@ function AddPurchaseHeader() {
                 </fieldset>
             </form>
             <OrderForm ID={purchaseId}/>
+        </div>
         </div>
     )
 }

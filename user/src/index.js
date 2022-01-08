@@ -4,7 +4,7 @@ import './index.css';
 import SignIn from './signIn/signIn';
 import SignUp from './signUp/signUp';
 import Purchase from './purchase/purchase';
-
+import Stock from './stock/stock';
 import AddPurchaseHeader from './purchase/addPurchaseHeader';
 import Sales from './sales/sales';
 import AddSalesHeader from './sales/addSalesHeader';
@@ -26,6 +26,7 @@ ReactDOM.render(
   <Route path="Purchase/orderFormHeader" element={<AddPurchaseHeader/>} />
   <Route path="Sales" element={<Sales/>} />
   <Route path="Sales/salesFormHeader" element={<AddSalesHeader/>} />
+  <Route path="Stock" element={<Stock/>} />
   </Routes>
   </BrowserRouter>
   ,

@@ -46,7 +46,7 @@ function SignInForm() {
                 }
                 else if(json === true){
                     alert("登入成功");
-                    navigate('/stock')
+                    navigate('/Stock')
                 }
                 
             }
