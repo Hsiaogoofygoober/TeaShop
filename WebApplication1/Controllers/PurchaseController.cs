@@ -123,7 +123,6 @@ namespace WebApplication1.Controllers
             return new JsonResult(resultViewModel);
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<JsonResult> CreatePurchaseHeader([FromBody]PurchaseOrderHeader _poh) 
         {
@@ -163,7 +162,6 @@ namespace WebApplication1.Controllers
             return new JsonResult(purchaseId);
         }
 
-        [Authorize]
         [HttpPut]
         public async Task<JsonResult> UpdatePurchaseHeader([Bind(include: "SupplierId, PurchaseTotal, PurchaseDate")]PurchaseOrderHeader _poh) 
         {
@@ -194,7 +192,6 @@ namespace WebApplication1.Controllers
             return new JsonResult(affectRows);
         }
 
-        [Authorize]
         [HttpDelete("{id:int}")]
         public async Task<JsonResult> DeletePurchaseHeader(int id)
         {

@@ -72,7 +72,6 @@ namespace WebApplication1.Controllers
         //    return new JsonResult(affectRows);
         //}
 
-        [Authorize]
         [HttpPost("{id:int}")]
         public JsonResult Create(int id, [FromBody]JObject data) 
         {
@@ -121,7 +120,6 @@ namespace WebApplication1.Controllers
         }
 
         // PUT api/PurchaseDetail/5
-        [Authorize]
         [HttpPut("{id:int}")]
         public async Task<JsonResult> UpdatePurchaseDetail(int id, [Bind(include: "ProductId, PurchaseQuantity, UnitPrice")] PurchaseOrderDetail _pod)
         {

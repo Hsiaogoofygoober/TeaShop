@@ -103,7 +103,6 @@ namespace WebApplication1.Controllers
             return new JsonResult(resultViewModel);
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<JsonResult> CreateSalesHeader([FromBody]SalesOrderHeader _soh)
         {
@@ -143,7 +142,6 @@ namespace WebApplication1.Controllers
             return new JsonResult(salesId);
         }
 
-        [Authorize]
         [HttpDelete("{id:int}")]
         public async Task<JsonResult> DeleteSalesHeader(int id)
         {
