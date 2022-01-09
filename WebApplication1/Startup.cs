@@ -58,6 +58,9 @@ namespace WebApplication1
             services.AddDbContext<TeaShopERPContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DBConnectionString")));
 
+            services.AddHttpClient();
+
+            services.AddSession();
             services.AddControllers();
         }
 

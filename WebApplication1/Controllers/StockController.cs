@@ -19,7 +19,7 @@ namespace WebApplication1.Controllers
     public class StockController : ControllerBase
     {
 
-        [Authorize]
+        
         [HttpGet]
         public JsonResult Get()
         {
