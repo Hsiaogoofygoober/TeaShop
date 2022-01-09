@@ -18,7 +18,6 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class PurchaseController : ControllerBase
     {
-        [Authorize]
         [HttpGet]
         public JsonResult Get()
         {
@@ -55,7 +54,6 @@ namespace WebApplication1.Controllers
             return new JsonResult(endData);
         }
 
-        [Authorize]
         [HttpGet("{id:int}")]
         public JsonResult GetDetails(int id)
         {
