@@ -18,7 +18,7 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class PurchaseController : ControllerBase
     {
-        [Authorize]
+        [Authorize (Roles = "Admininstrator")]
         [HttpGet]
         public JsonResult Get()
         {
@@ -55,7 +55,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(endData);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admininstrator")]
         [HttpGet("{id:int}")]
         public JsonResult GetDetails(int id)
         {
@@ -123,7 +123,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(resultViewModel);
         }
 
-        [Authorize]
+        [Authorize (Roles = "Admininstrator")]
         [HttpPost]
         public async Task<JsonResult> CreatePurchaseHeader([FromBody]PurchaseOrderHeader _poh) 
         {
@@ -163,7 +163,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(purchaseId);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admininstrator")]
         [HttpPut]
         public async Task<JsonResult> UpdatePurchaseHeader([Bind(include: "SupplierId, PurchaseTotal, PurchaseDate")]PurchaseOrderHeader _poh) 
         {
@@ -194,7 +194,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(affectRows);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admininstrator")]
         [HttpDelete("{id:int}")]
         public async Task<JsonResult> DeletePurchaseHeader(int id)
         {
