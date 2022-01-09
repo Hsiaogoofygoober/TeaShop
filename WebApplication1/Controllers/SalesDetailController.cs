@@ -20,7 +20,7 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class SalesDetailController : ControllerBase
     {
-        [Authorize]
+
         [HttpPost("{id:int}")]
         public JsonResult Create(int id,[FromBody]JObject data)
         {
@@ -69,7 +69,6 @@ namespace WebApplication1.Controllers
         }
 
         // PUT api/PurchaseDetail/5
-        [Authorize]
         [HttpPut("{id:int}")]
         public async Task<JsonResult> UpdateSalesDetail(int id, [Bind(include: "ProductId, SalesQuantity, UnitPrice")] SalesOrderDetail _sod)
         {
