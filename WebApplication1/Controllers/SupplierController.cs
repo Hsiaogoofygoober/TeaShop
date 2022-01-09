@@ -40,7 +40,6 @@ namespace WebApplication1.Controllers
             return new JsonResult(result);
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<JsonResult> Create([FromBody]Supplier _s) 
         {
