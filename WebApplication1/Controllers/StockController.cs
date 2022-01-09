@@ -10,6 +10,7 @@ using WebApplication1.Models;
 using Newtonsoft.Json.Linq;
 using Dapper;
 using static Dapper.SqlMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Controllers
 {
@@ -18,6 +19,7 @@ namespace WebApplication1.Controllers
     public class StockController : ControllerBase
     {
 
+        [Authorize]
         [HttpGet]
         public JsonResult Get()
         {
@@ -85,6 +87,7 @@ namespace WebApplication1.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public JsonResult CreateProduct([FromBody]JObject data)
         {

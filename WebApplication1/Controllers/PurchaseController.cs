@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using WebApplication1.Models;
 using Dapper;
 using static Dapper.SqlMapper;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Controllers
 {
@@ -18,6 +18,7 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class PurchaseController : ControllerBase
     {
+        [Authorize]
         [HttpGet]
         public JsonResult Get()
         {
@@ -54,6 +55,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(endData);
         }
 
+        [Authorize]
         [HttpGet("{id:int}")]
         public JsonResult GetDetails(int id)
         {
@@ -121,6 +123,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(resultViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<JsonResult> CreatePurchaseHeader([FromBody]PurchaseOrderHeader _poh) 
         {
@@ -160,6 +163,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(purchaseId);
         }
 
+        [Authorize]
         [HttpPut]
         public async Task<JsonResult> UpdatePurchaseHeader([Bind(include: "SupplierId, PurchaseTotal, PurchaseDate")]PurchaseOrderHeader _poh) 
         {
@@ -190,6 +194,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(affectRows);
         }
 
+        [Authorize]
         [HttpDelete("{id:int}")]
         public async Task<JsonResult> DeletePurchaseHeader(int id)
         {

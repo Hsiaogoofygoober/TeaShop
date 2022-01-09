@@ -8,6 +8,7 @@ using WebApplication1.Models;
 using Dapper;
 using static Dapper.SqlMapper;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Controllers
 {
@@ -15,6 +16,7 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+
         [HttpGet]
         public async Task<JsonResult> Get() 
         {
@@ -37,6 +39,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(result);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<JsonResult> Post([FromBody]Product _product) 
         {
@@ -64,9 +67,10 @@ namespace WebApplication1.Controllers
                 return new JsonResult(affectedRows);
             }
 
-            return new JsonResult(0);
+            return new JsonResult("新增失敗!!!");
         }
 
+        [Authorize]
         [HttpPut]
         public async Task<JsonResult> UpdateProduct([Bind(include: "Name, Type, ProductCategory, ProductDescription")]Product _product) 
         {

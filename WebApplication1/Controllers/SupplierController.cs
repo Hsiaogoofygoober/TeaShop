@@ -1,16 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.Models;
 using Dapper;
 using static Dapper.SqlMapper;
 using System.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Controllers
 {
@@ -18,6 +16,8 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class SupplierController : ControllerBase
     {
+
+        [Authorize]
         [HttpGet]
         public async Task<JsonResult> GetSupplier() 
         {
@@ -40,6 +40,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(result);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<JsonResult> Create([FromBody]Supplier _s) 
         {

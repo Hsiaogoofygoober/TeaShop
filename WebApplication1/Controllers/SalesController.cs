@@ -9,7 +9,7 @@ using System;
 using WebApplication1.Models;
 using Dapper;
 using static Dapper.SqlMapper;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Controllers
 {
@@ -17,7 +17,7 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class SalesController : ControllerBase
     {
-
+        [Authorize]
         [HttpGet]
         public async Task<JsonResult> Get()
         {
@@ -40,6 +40,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(result);
         }
 
+        [Authorize]
         [HttpGet("{id:int}")]
         public JsonResult GetDetails(int id) 
         {
@@ -140,6 +141,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(salesId);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<JsonResult> CreateSalesHeader([FromBody]SalesOrderHeader _soh)
         {
@@ -179,6 +181,7 @@ namespace WebApplication1.Controllers
             return new JsonResult(salesId);
         }
 
+        [Authorize]
         [HttpDelete("{id:int}")]
         public async Task<JsonResult> DeleteSalesHeader(int id)
         {
