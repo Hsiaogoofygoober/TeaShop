@@ -1,6 +1,7 @@
 import React from "react";
 import {api} from '../api';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
 function AddSupplier() {
     let navigate = useNavigate()
     const handleAddSupplierSubmit = (e) => {
@@ -36,8 +37,8 @@ function AddSupplier() {
 
 
     return (
-        <div className="uk-card uk-card-default uk-card-body uk-width-1-2@m">
-            <h3 className="uk-card-title">新增廠商</h3>
+        <div className="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-position-top-center uk-position-relative">
+            <p><Link to="/Purchase/orderFormHeader" uk-icon="icon:  arrow-left; ratio: 1.5"></Link> <span className="uk-card-title">新增廠商</span></p>
             <form id="addSupplier" onSubmit={
                 handleAddSupplierSubmit}>
                 <fieldset className="uk-fieldset">
