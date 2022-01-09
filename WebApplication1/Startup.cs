@@ -61,6 +61,7 @@ namespace WebApplication1
             services.AddHttpClient();
 
             services.AddSession();
+
             services.AddControllers();
         }
 

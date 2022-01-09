@@ -19,7 +19,6 @@ namespace WebApplication1.Controllers
     public class StockController : ControllerBase
     {
 
-        
         [HttpGet]
         public JsonResult Get()
         {
@@ -34,17 +33,6 @@ namespace WebApplication1.Controllers
             SqlDataReader dr = null;
             string sqlstr = "Select p.ProductId, p.Name, p.Type, p.ProductCategory, s.StockId, s.StockAmount";
             sqlstr += " From [Product] AS p INNER JOIN [Stock] AS s ON p.ProductId = s.ProductId";
-
-            //var endData = Conn.Query<Product, Stock, Product>(
-            //        //             *** 一對多的兩個關聯式資料表      *** 仍用第一個資料表 
-            //        sqlstr,
-            //        (p, s) =>
-            //        {
-            //            p.Stocks = s;
-            //            return p;
-            //        },
-            //        splitOn: "ProductId") // 重點!! "一對多"兩個關聯式資料表，表示"多"的那個(學生)資料表的ID(Key)
-            //        .Distinct();    // 加上這一段，可以把「重複的科系」資料取消，如果不加上這一句，「科系」會重複出現。
 
             SqlCommand cmd = new SqlCommand(sqlstr, Conn);
             dr = cmd.ExecuteReader();
@@ -87,7 +75,6 @@ namespace WebApplication1.Controllers
         }
 
 
-        [Authorize]
         [HttpPost]
         public JsonResult CreateProduct([FromBody]JObject data)
         {

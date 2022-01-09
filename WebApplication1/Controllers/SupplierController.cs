@@ -17,7 +17,6 @@ namespace WebApplication1.Controllers
     public class SupplierController : ControllerBase
     {
 
-        [Authorize]
         [HttpGet]
         public async Task<JsonResult> GetSupplier() 
         {

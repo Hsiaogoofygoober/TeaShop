@@ -17,7 +17,6 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class SalesController : ControllerBase
     {
-        [Authorize]
         [HttpGet]
         public async Task<JsonResult> Get()
         {
@@ -40,7 +39,6 @@ namespace WebApplication1.Controllers
             return new JsonResult(result);
         }
 
-        [Authorize]
         [HttpGet("{id:int}")]
         public JsonResult GetDetails(int id) 
         {
