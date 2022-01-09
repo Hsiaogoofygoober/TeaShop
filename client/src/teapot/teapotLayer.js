@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { api } from '../api'
-import defaultImg from '../productImg/default.jpg'
+import defaultImg from '../img/default.jpg'
 import '../index.css'
 
 function TeapotLayer() {
@@ -24,7 +24,7 @@ function TeapotLayer() {
               <div>
                 <div className="uk-card uk-card-default">
                   <div className="uk-card-media-top">
-                    <img src={data.ProductId} onError={(e) => { e.target.onerror = null; e.target.src = defaultImg }} />
+                    <img src={data.ProductPicture} className="productImg" onError={(e) => { e.target.onerror = null; e.target.src = defaultImg }} />
                   </div>
                   <div className="uk-card-body">
                     <p className="uk-card-title productNameFont" >{data.Name}</p>

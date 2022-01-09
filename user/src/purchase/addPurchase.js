@@ -8,6 +8,7 @@ function AddPurchase(props) {
     const [category, setCategory] = useState('綠泥');
     const [type, setType] = useState('茶壺');
     const [productId, setProductId] = useState(1);
+    const [check,setCheck] = useState(true);
     const [productName, setproductName] = useState(
         <option>loading</option>
     )
@@ -48,7 +49,9 @@ function AddPurchase(props) {
         setproductName(props.productJson.map((data, index) => {
             
                 if(data.Type === type && data.ProductCategory === category){
-                    setName(data.Name)
+                    
+                        setName(data.Name)
+                       
                     return (
                         <option key={index}>{data.Name}</option>
                     )

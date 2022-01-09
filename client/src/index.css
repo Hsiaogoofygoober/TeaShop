@@ -8,3 +8,18 @@
   font-size: 14px;
   font-weight: 600;
 }
+.productImg{
+  width: 220px;
+  height: 300px;
+}
+
+.backgroundImg1{
+  background-image: url(./img/tea1.jpg);
+  width:100%;
+  height:fit-content;
+}
+.backgroundImg2{
+  background-image: url(./img/tea4.png);
+  width:100%;
+  height:fit-content;
+}

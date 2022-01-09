@@ -8,6 +8,7 @@ import Stock from './stock/stock';
 import AddPurchaseHeader from './purchase/addPurchaseHeader';
 import Sales from './sales/sales';
 import AddSalesHeader from './sales/addSalesHeader';
+import AddSupplier from './purchase/addSupplier';
 //import Stock from './stock/stock';
 
 import {
@@ -27,6 +28,7 @@ ReactDOM.render(
   <Route path="Sales" element={<Sales/>} />
   <Route path="Sales/salesFormHeader" element={<AddSalesHeader/>} />
   <Route path="Stock" element={<Stock/>} />
+  <Route path="Purchase/orderFormHeader/addSupplier" element={<AddSupplier/>} />
   </Routes>
   </BrowserRouter>
   ,

@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import TeapotLayer from './teapot/teapotLayer';
 import reportWebVitals from './reportWebVitals';
+import Intro from './teashopIntro/intro';
+import Information from './teashopIntro/information'
 
 ReactDOM.render(
   <div>
+  <Intro/>
   <TeapotLayer/>
+  <Information/>
   </div>,
   document.getElementById('root')
 );

@@ -6,12 +6,12 @@ import Navbar from "../navbar/navbar";
 import '../index.css'
 function AddPurchaseHeader() {
     const [submitType, setSubmitType] = useState("submit");
-    const [supplierList,setSupplierList] = useState(<option>loading</option>);
-    const [supplierName,setSupplierName] = useState('');
-    const [selectId,setSelectId] = useState(0);
+    const [supplierList, setSupplierList] = useState(<option>loading</option>);
+    const [supplierName, setSupplierName] = useState('');
+    const [selectId, setSelectId] = useState(0);
 
-    const [supplierId,setSupplierId] = useState([1,2,3]);
-    const [purchaseId,setPurchseId] = useState(0);
+    const [supplierId, setSupplierId] = useState([1, 2, 3]);
+    const [purchaseId, setPurchseId] = useState(0);
     const handleSubmit = (e) => {
         let json = false;
         e.preventDefault();
@@ -43,6 +43,7 @@ function AddPurchaseHeader() {
         sendOrderData();
     }
 
+    
     function disappear(e) {
         setSubmitType("hidden")
         console.log(e.target)
@@ -54,52 +55,53 @@ function AddPurchaseHeader() {
             try {
                 const response = await fetch(url);
                 const json = await response.json();
-                
+
                 console.log(json);
-                setSupplierList(json.map((data)=>
+                setSupplierList(json.map((data) =>
                     <option key={data.SupplierId}>{data.SupplierName}</option>
                 ))
-                setSupplierId(json.map((data)=>
+                setSupplierId(json.map((data) =>
                     data.SupplierId
                 ))
-                setSupplierName(json.map(data=>data.SupplierName))
+                setSupplierName(json.map(data => data.SupplierName))
             } catch (error) {
                 console.log("error", error);
             }
         };
 
         fetchData();
-    },[])
-   
-   
+    }, [])
+
+
     return (
         <div>
-        <Navbar/>
-        <div className="uk-card uk-card-default uk-card-body uk-width-2-3@m uk-position-top-center uk-position-large uk-position-relative">
-            <p><Link to="/Purchase" uk-icon="icon:  arrow-left; ratio: 1.5"></Link> <span className="uk-card-title uk-position-medium uk-position-top-center">訂貨單</span></p>
-           
-            <form id="orderFormHeader" className="uk-form-horizontal uk-margin-large" onSubmit={handleSubmit}>
+            <Navbar />
+            <div className="uk-card uk-card-default uk-card-body uk-width-2-3@m uk-position-top-center uk-position-large uk-position-relative">
+                <p><Link to="/Purchase" uk-icon="icon:  arrow-left; ratio: 1.5"></Link> <span className="uk-card-title uk-position-medium uk-position-top-center">訂貨單</span></p>
 
-                <fieldset className="uk-fieldset">
-                    <input name="SupplierId" className="uk-input" type="hidden" value={supplierId.at(selectId)} />
-                    <div className="uk-margin">
-                    <label className="uk-form-label" >廠商</label>
-                    <select  className="uk-select uk-form-width-medium" onChange={(e)=>setSelectId(supplierName.findIndex((element)=> element === e.target.value)) }>
-                    {supplierList}
-                    </select>
-                    </div>
-                    <div className="uk-margin">
-                        <label className="uk-form-label" >購買總價</label>
-                        <input name="PurchaseTotal" className="uk-input uk-form-width-medium" type="number" />
-                    </div>
-                    <div className="uk-margin">
+                <form id="orderFormHeader" className="uk-form-horizontal uk-margin-large" onSubmit={handleSubmit}>
 
-                        <button type={submitType} className="uk-button uk-button-default submitPos2" >確定</button>
-                    </div>
-                </fieldset>
-            </form>
-            <OrderForm ID={purchaseId}/>
-        </div>
+                    <fieldset className="uk-fieldset">
+                        <input name="SupplierId" className="uk-input" type="hidden" value={supplierId.at(selectId)} />
+                        <div className="uk-margin">
+                            <label className="uk-form-label" >廠商</label>
+                            <select className="uk-select uk-form-width-medium" onChange={(e) => setSelectId(supplierName.findIndex((element) => element === e.target.value))}>
+                                {supplierList}
+                            </select>
+                        </div>
+                        <div className="uk-margin">
+                            <label className="uk-form-label" >購買總價</label>
+                            <input name="PurchaseTotal" className="uk-input uk-form-width-medium" type="number" />
+                        </div>
+                        <div className="uk-margin">
+
+                            <button type={submitType} className="uk-button uk-button-default submitPos2" >確定</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <Link to="/Purchase/orderFormHeader/addSupplier">新增廠商</Link>
+                <OrderForm ID={purchaseId} />
+            </div>
         </div>
     )
 }
