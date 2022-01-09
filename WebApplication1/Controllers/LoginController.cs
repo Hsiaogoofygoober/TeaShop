@@ -66,7 +66,6 @@ namespace WebApplication1.Controllers
             }
         }
 
-
         public async Task<bool> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
