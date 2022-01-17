@@ -28,7 +28,7 @@ function TeapotLayer() {
                   </div>
                   <div className="uk-card-body">
                     <p className="uk-card-title productNameFont" >{data.Name}</p>
-                    <p>{data.Type + "    " + data.ProductCategory}</p>
+                    
                     <a className="uk-button uk-button-default" uk-toggle={"target: #ID" + data.ProductId}>產品描述</a>
 
                     <div id={"ID" + data.ProductId} uk-modal="true">
@@ -38,6 +38,7 @@ function TeapotLayer() {
 
                         <div className="uk-modal-header">
                           <h2 className="uk-modal-title">{data.Name}</h2>
+                          <p>{data.Type + "    " + data.ProductCategory}</p>
                         </div>
 
                         <div className="uk-modal-body" uk-overflow-auto="true">

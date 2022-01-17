@@ -37,7 +37,7 @@ function AddSupplier() {
 
 
     return (
-        <div className="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-position-top-center uk-position-relative">
+        <div className="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-position-top-center uk-position-relative uk-position-medium">
             <p><Link to="/Purchase/orderFormHeader" uk-icon="icon:  arrow-left; ratio: 1.5"></Link> <span className="uk-card-title">新增廠商</span></p>
             <form id="addSupplier" onSubmit={
                 handleAddSupplierSubmit}>
